@@ -1,0 +1,110 @@
+
+.card {
+  border-radius: 8px;
+    position: relative;
+    margin: 1rem;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .info {
+    padding: 2% 7%;
+    text-align: center;
+  }
+  .post:hover  {
+    color: #00ac96;
+  }
+  .post:hover > .backgroundImage {
+    opacity: 0.7;
+  }
+
+  .author {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+      width:100%;
+    box-sizing: border-box;
+    background-color: #222;
+    border:1px solid white;
+    border-radius: 8px;
+  }
+  .author h6 {
+    margin-left: 10px;
+  }
+
+  .author:hover {
+    color:#00ac96;
+    border: 1px solid #00ac96;
+  }
+
+
+  .avatar {
+    height: 40px;
+    width:40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  
+  .card h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .card p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  
+  .logo {
+    height: 1em;
+    margin-left: 0.5rem;
+  }
+
+
+  .backgroundImage {
+    border-radius: 8px;
+
+      height:100px;
+      width:100%;
+      object-fit: cover;
+  }
+
+  
+  @media (max-width: 600px) {
+    .grid {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .card,
+    .footer {
+      border-color: #222;
+    }
+    .code {
+      background: #111;
+    }
+    .logo img {
+      filter: invert(1);
+    }
+  }
+

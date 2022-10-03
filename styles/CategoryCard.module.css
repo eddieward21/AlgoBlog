@@ -1,0 +1,18 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 3vw;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 12px;
+    height: 100px;
+    width: 800px;
+    background-color: black;
+    border: 1px solid white;
+    margin-bottom: 1vw;
+}
+.card:hover {
+    color: #00ac96;
+    border: 1px solid #00ac96;
+}

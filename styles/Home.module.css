@@ -27,9 +27,14 @@
   align-items: center;
   flex-grow: 1;
 }
+.categoryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 800px;
+}
 
 .title a {
-  color: #0070f3;
+  color: #00ac96;
   text-decoration: none;
 }
 
@@ -66,10 +71,9 @@
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   max-width: 800px;
 }
 
