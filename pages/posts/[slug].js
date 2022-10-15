@@ -1,5 +1,6 @@
 import { GraphQLClient, gql } from "graphql-request";
 import styles from '../../styles/Slug.module.css'
+import Navbar from '../../components/Navbar'
 
 const graphcms = new GraphQLClient(
     process.env.API_ENDPOINT
@@ -55,6 +56,8 @@ export async function getStaticProps({params}) {
 const BlogPost = ({post}) => {
   return (
     <div className={styles.main}>
+        <Navbar/>
+
         <br></br>
         <a href = "/">Back</a>
         <h1>{post.title}</h1>

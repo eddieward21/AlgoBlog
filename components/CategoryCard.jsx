@@ -8,7 +8,7 @@ const CategoryCard = ({category}) => {
       
     <a href = {"/categories/" + category.name}>
         <div className={styles.card}>
-            <h3>{category.name} </h3>
+            <h3>{category.name}</h3>
         </div>
     </a>
   )

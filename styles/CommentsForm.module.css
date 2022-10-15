@@ -1,0 +1,51 @@
+
+
+.commentsForm {
+    width: 400px;
+    min-height: 400px;
+    display: block;
+    margin: 2% auto;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2% 2%;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.commentsForm > * {
+    font-size: 20px;
+    min-height: 35px;
+    width: 100%;
+    margin-bottom: 1vw;
+    border-radius: 8px;
+    background-color: black;
+}
+.commentBtn {
+    background-color: #00ac96;
+    color: white;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2% 2%;
+    width: 150px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.commentBtn:hover {
+    background-color: white;
+    color: #00ac96;
+    border: 1px solid #00ac96;
+}
+
+.commentsForm > *:hover {
+    border:1px solid #00ac96;
+}

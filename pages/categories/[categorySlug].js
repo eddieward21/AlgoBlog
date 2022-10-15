@@ -2,6 +2,8 @@ import React from 'react'
 import {gql, GraphQLClient} from 'graphql-request'
 import BlogCard from '../../components/BlogCard'
 import styles from '../../styles/CategorySlug.module.css'
+import Navbar from '../../components/Navbar'
+
 
 const graphcms = new GraphQLClient(
     process.env.API_ENDPOINT
@@ -65,8 +67,7 @@ export async function getStaticProps({params}) {
 const Category = ({posts, slug}) => {
   return (
     <div className={styles.grid}>
-
-        <h1>Category: {slug} Algorithms</h1>
+        <Navbar/>
         {posts.map((post) => 
         <BlogCard post = {post}/>
         )}
