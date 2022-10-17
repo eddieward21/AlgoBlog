@@ -88,7 +88,7 @@ const BlogPost = ({post, slug}) => {
              </div>
        <img className={styles.mainPhoto} src = {post.coverPhoto.url}/>
        <CommentsForm slug = {slug}/>
-        <Comments/>
+        <Comments slug = {slug}/>
     </div>
   )
 }
