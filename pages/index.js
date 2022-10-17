@@ -5,7 +5,6 @@ import {gql, GraphQLClient} from 'graphql-request'
 import BlogCard from '../components/BlogCard'
 import CategoryCard from '../components/CategoryCard'
 import Navbar from '../components/Navbar'
-import CommentsForm from '../components/CommentsForm'
 
 const graphcms = new GraphQLClient(
   process.env.API_ENDPOINT
@@ -97,7 +96,6 @@ export default function Home({posts, categories}) {
           />
           )}
         </div>
-        <CommentsForm/>
       </main>
 
       <footer className={styles.footer}>

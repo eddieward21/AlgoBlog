@@ -1,6 +1,9 @@
 import { GraphQLClient, gql } from "graphql-request";
 import styles from '../../styles/Slug.module.css'
 import Navbar from '../../components/Navbar'
+import CommentsForm from '../../components/CommentsForm'
+import Comments from '../../components/Comments'
+import comments from "../api/comments";
 
 const graphcms = new GraphQLClient(
     process.env.API_ENDPOINT
@@ -36,6 +39,16 @@ const SLUGLIST = gql`
         }
     }
 `
+
+const commentsQuery = gql`
+query GetComments($slug: String!) {
+    comments(where: {post: {slug: $slug}}) {
+        name
+        comment
+    }
+}
+`
+
 export async function getStaticPaths() {
     const {posts} = await graphcms.request(SLUGLIST)
     return {
@@ -43,21 +56,26 @@ export async function getStaticPaths() {
     fallback: false,
     }
 }
+
 export async function getStaticProps({params}) {
     const slug = params.slug
     const data = await graphcms.request(QUERY, {slug})
     const post = data.post;
+
+
     return {
         props: {
+            slug,
             post
         }
     }
 }
-const BlogPost = ({post}) => {
+const BlogPost = ({post, slug}) => {
   return (
     <div className={styles.main}>
         <Navbar/>
 
+        <br></br>
         <br></br>
         <a href = "/">Back</a>
         <h1>{post.title}</h1>
@@ -69,6 +87,8 @@ const BlogPost = ({post}) => {
         dangerouslySetInnerHTML={{__html:post.content.html}} >
              </div>
        <img className={styles.mainPhoto} src = {post.coverPhoto.url}/>
+       <CommentsForm slug = {slug}/>
+        <Comments/>
     </div>
   )
 }

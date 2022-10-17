@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import styles from '../styles/CommentsForm.module.css'
 
 export const submitComment = async (obj) => {
+
   const result = await fetch(`/api/comments`, {
     method: 'POST',
     headers: {
@@ -43,6 +44,21 @@ const CommentsForm = ({slug}) => {
         setShowSuccessMessage(false)
       }, 3000)
 
+      const commentObj = {
+        name: nameEl.current.value,
+        comment: commentEl.current.value,
+        email: emailEl.current.value,
+        slug: slug
+    }
+    console.log()
+    console.log()
+    console.log("CommentObj: " + commentObj.name)
+    console.log("CommentObj: " + commentObj.email)
+    console.log("CommentObj: " + commentObj.comment)
+  
+    console.log()
+    console.log()
+
       submitComment(commentObj)
       .then((res) => {
         console.log("result: ", res)
@@ -50,11 +66,9 @@ const CommentsForm = ({slug}) => {
 
     }  
 
-    const commentObj = {
-      name: nameEl.current.value,
-      comment: commentEl.current.value,
-      email: emailEl.current.value
-  }
+
+
+
   localStorage.setItem('name', nameEl.current.value)
   localStorage.setItem('email', emailEl.current.value)
   localStorage.setItem('comment', commentEl.current.value);
@@ -62,12 +76,15 @@ const CommentsForm = ({slug}) => {
   }
   return (
     <div className={styles.commentsForm}>
-      <textarea ref={commentEl} name="comment" id="" cols="30" rows="4"/>
-      <input type="text" ref = {nameEl} name = "name"/>
-      <input type="text" ref = {emailEl} name = "email"/>
+      <div className = {styles.commentFlex}> 
+      <p className={styles.commentHeader}>Leave a comment</p>
+      <textarea className = {styles.inputElement} ref={commentEl} name="comment" id="" cols="30" rows="4"/>
+      <input className = {styles.inputElement} type="text" ref = {nameEl} name = "name"/>
+      <input className = {styles.inputElement} type="text" ref = {emailEl} name = "email"/>
     <button className={styles.commentBtn} onClick={handleCommentSubmission}>Submit</button>
-    {error && <p>All fields are required.</p>}
-    {showSuccessMessage && <p>Your comment was submitted.</p>}
+    {error && <p className={styles.errorMsg}>All fields are required.</p>}
+    {showSuccessMessage && <p className={styles.successMsg}>Your comment was submitted.</p>}
+    </div>
     </div>
   )
 }
