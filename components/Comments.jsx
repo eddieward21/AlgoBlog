@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import request, {gql, GraphQLClient} from 'graphql-request'
 import styles from '../styles/Comments.module.css'
 
-const graphcms = new GraphQLClient(
-  process.env.API_ENDPOINT  
+var endpoint = process.env.API_ENDPOINT
+var endpoint = "https://api-us-east-1.hygraph.com/v2/cl8qbvbrp2dmu01t874t53pyd/master"
 
-)
+
 
 export async function getComments(slug) {
   const query = gql`
@@ -18,7 +18,7 @@ export async function getComments(slug) {
   }
   `
   
-  const result = await request("https://api-us-east-1.hygraph.com/v2/cl8qbvbrp2dmu01t874t53pyd/master", query, {slug})
+  const result = await request(endpoint, query, {slug})
   return result.comments;
 }
 
