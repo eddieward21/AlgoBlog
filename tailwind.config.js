@@ -6,7 +6,17 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "primary": "var(--black)",
+        "secondary": "var(--black2)",
+        "tertiary": "var(--darkgreen)",
+        "btn-color": "var(--darkgreen)",
+        "hover-color": "var(--darkgreen)",
+
+      },
+    },
   },
   plugins: [],
 }
+
