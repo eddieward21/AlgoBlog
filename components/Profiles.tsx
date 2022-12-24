@@ -3,9 +3,9 @@ import Link from "next/link"
 
 const Profiles = () => {
   return (
-    <div className='pt-5 col-span-4 px-10'>
+    <div className='pt-5 col-span-4 px-10 bg-[#131525]'>
         <h1 className = "text-white text-xl font-bold ml-2">Profiles</h1>
-        <div className="mt-5 flex items-center pr-20 rounded-lg shadow-lg">
+        <div className="mt-5 flex items-center pr-20 rounded-lg">
       <Link href= ""><img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" className="hover:opacity-50 w-12 h-12 rounded-full mr-4" /></Link>
       <div className="text-md font-bold flex flex-col">
         <h1 className = "text-white text-sm hover:text-[#7de2d1]"><Link href = "">Username</Link></h1>

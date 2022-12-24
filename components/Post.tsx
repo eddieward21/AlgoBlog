@@ -10,8 +10,8 @@ type Props = {
 const Post = ({post} : Props) => {
 
   return (
-    <div className="text-white relative p-6 rounded-lg shadow-md bg-black mt-5 mb-5 border border-gray-500">
-              <div className="flex items-center mb-5">
+    <div className="text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
+              <div className=" px-3 flex items-center mb-5">
         <Link href = ""><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
         <div className="ml-4 flex flex-col">
             <Link href = ""className = "font-semibold text-sm text-white hover:text-[#7de2d1]">{post.author.name}</Link> 
@@ -26,7 +26,7 @@ const Post = ({post} : Props) => {
     <div className="relative rounded-t-lg overflow-hidden">
       <img src = {urlFor(post.mainImage).url()} alt="Post image" className="w-full h-full object-cover" />
     </div>
-    <div className="">
+    <div className="px-3 ">
     <div className="flex flex-row w-full h-10 mt-2 flex items-center">
         <div className="mr-6 text-white-600 text-sm">
           <HandThumbUpIcon height={30} width={30}/>  

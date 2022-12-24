@@ -9,7 +9,7 @@ type Props = {
 function Posts({posts}: Props) {
   console.log(posts.length)
 
-  return <div className = "w-9/12">
+  return <div className = "w-10/12">
     {posts.map(post => 
     <Post post = {post}/>
       )}
