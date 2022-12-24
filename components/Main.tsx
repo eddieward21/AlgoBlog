@@ -21,7 +21,8 @@ const Main = async () => {
       
   return (
     <div className = "col-span-5 border border-white-500 flex flex-col items-center overflow-scroll">
-        <Categories categories = {posts.categories}/>
+
+        <Categories/>
         <Posts posts = {posts}/>
     </div>
   )
