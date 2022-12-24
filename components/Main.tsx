@@ -20,7 +20,7 @@ const Main = async () => {
     const posts = await client.fetch(query)
       
   return (
-    <div className = "col-span-5 border border-white-500 flex flex-col items-center overflow-scroll">
+    <div className = "col-span-5 flex flex-col items-center overflow-scroll">
 
         <Categories/>
         <Posts posts = {posts}/>
