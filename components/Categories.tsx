@@ -6,23 +6,33 @@ type Props = {
 
 const Categories = ({categories}: Props) => {
   return (
+  <div className='col-span-4 pt-5 w-full'> 
+      <h1 className = "font-bold text-white text-xl ml-4 ">Categories</h1>
 
-<div className="mt-5 w-10/12 h-32 rounded-md border-x border-gray-500">
+<div className="w-full">
 
-    <div className = "h-full grid grid-flow-col auto-cols-[60%] overflow-x-auto gap-2.5 overscroll-contain snap-mandatory">
 
     {categories.map((category) => 
-    <div className='bg-black snap-start w-full h-full border border-gray-500'>
-      <h1 className = "text-white">{category.title}</h1>
-    </div>       
+ <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 border-b border-gray-500">
+ <div className="py-4">
+   <div className="font-bold text-[whitesmoke] text-sm mb-2">{category.title}</div>
+   <p className="text-gray-300 text-xs">
+     {category.description}
+   </p>
+ </div>
+ <div className="py-4">
+   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Problems</span>
+   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">View More</span>
+ </div>
+</div>
           )}
      
 
-    </div>
 </div>
 
+</div>
+  )
 
-    )
 }
 
 export default Categories

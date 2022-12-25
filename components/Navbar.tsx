@@ -8,8 +8,8 @@ import { HeartIcon, PlusCircleIcon, UserCircleIcon, HomeIcon } from '@heroicons/
 
 const Navbar = () => {
   return (
-    <nav className = "flex flex-col text-white font-bold py-3 col-span-3 bg-black pl-5 w-full pr-10 h-screen py-10 border-r-2 h-screen sticky top-0 border-r border-gray-500">
-      <div className="w-full h-full position:fixed left-0 top-0">
+    <nav className = "flex flex-col h-screen text-white font-bold py-3 col-span-3 bg-black pl-5 w-full pr-10 py-10 border-r-2 sticky top-0 border-r border-gray-500">
+      <div className="w-full position:fixed left-0 top-0">
       <h1 className = "text-xl ml-5">AlgoBlog</h1>
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HomeIcon className = "mr-5"height={25} width={25}/> Home</Link>
 

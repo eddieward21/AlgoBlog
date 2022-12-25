@@ -4,21 +4,27 @@ import { groq } from 'next-sanity'
 import Main from '../components/Main'
 import Profiles from '../components/Profiles'
 import client from '../utils/client'
-
+import Footer from '../components/Footer'
+import Categories from '../components/Categories'
 async function HomePage() {
 
 
 
-  const query = groq`*[_type=='author'] {
+  const query = groq`*[_type=='category'] {
     ...,
   }
   `
-const profiles = await client.fetch(query)
+const categories = await client.fetch(query)
+
+
+
   return (
-    <div className = "bg-[#131515] font-mono grid grid-cols-12">
+    <div className = "flex flex-col">
+    <div className = "bg-[#131515] font-poppins grid grid-cols-12 h-max">
       <Navbar/>
       <Main/>
-      <Profiles profiles = {profiles}/>
+      <Categories categories = {categories}/>
+    </div>
 
     </div>
   )

@@ -18,18 +18,17 @@ const Main = async () => {
       }
       `
     const posts = await client.fetch(query)
-
-  const categoryQuery = groq `*[_type=='category'] {
-    ...,
+    const profileQuery = groq`*[_type=='author'] {
+      ...,
+    }
+    `
+  const profiles = await client.fetch(profileQuery)
   
-  }  
-  `
-  const categories = await client.fetch(categoryQuery)
 
   return (
     <div className = "col-span-5 flex flex-col items-center overflow-scroll">
 
-        <Categories categories = {categories}/>
+        <Profiles profiles = {profiles}/>
         <Posts posts = {posts}/>
     </div>
   )
