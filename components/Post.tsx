@@ -10,8 +10,32 @@ type Props = {
 }
 const Post = ({post} : Props) => {
 
+
+  const mutations = [{
+    createOrReplace: {
+      _id: '123',
+      _type: 'cms.article',
+      title: 'An article'
+    }
+  }]
+  
+  fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`, {
+    method: 'post',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${process.env.TOKEN}`
+    },
+    body: JSON.stringify({mutations})
+  })
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.error(error))
+
+
+
+
   return (
-    <div className="text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
+    <div className="z-0 text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
               <div className=" px-3 flex items-center mb-5">
         <Link href = {`/profiles/${post.author.name}`}><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
         <div className="ml-4 flex flex-col">

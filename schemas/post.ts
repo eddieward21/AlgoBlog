@@ -65,6 +65,14 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'comment'}}],
     }),
+    defineField({
+      name: 'likes',
+      title: 'Likes',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'like'}}],
+    }),
+    
+  
   ],
 
   preview: {
