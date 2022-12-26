@@ -47,7 +47,23 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'string',
+    }),
+    defineField({
+      name: 'approach',
+      title: 'Approach',
+      type: 'string',
+    }),
+    defineField({
+      name: 'solution',
+      title: 'Solution',
+      type: 'string',
+    }),
+    defineField({
+      name: 'comments',
+      title: 'Comments',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'comment'}}],
     }),
   ],
 

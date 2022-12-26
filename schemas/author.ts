@@ -28,6 +28,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'friends',
+      title: 'Friends',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'author'}}],
+    }),
+    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'array',
