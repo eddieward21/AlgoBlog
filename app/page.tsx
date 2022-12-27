@@ -11,6 +11,7 @@ async function HomePage() {
 
 
   const query = groq`*[_type=='category'] {
+
     ...,
   }
   `

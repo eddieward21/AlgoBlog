@@ -1,24 +1,40 @@
+
 import React from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
 import {HandThumbUpIcon, ChatBubbleBottomCenterTextIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import client from '../utils/client'
+import { groq } from 'next-sanity'
+import Modal from './Modal'
+
 
 type Props = {
     post: Post
     body: Block[]
 }
-const Post = ({post} : Props) => {
+async function Post({post} : Props) {
+  
+  const query = groq`*[_type=='category'] {
+    ...,
+  }
+  `
+const categories = await client.fetch(query)
 
-
+async function addPost() {
   const mutations = [{
     createOrReplace: {
-      _id: '123',
-      _type: 'cms.article',
-      title: 'An article'
-    }
+      _type: '"POST',
+      title: 'Something',
+      categories: {
+        _type: "reference",
+        _ref: "abc123"      
+      },
+      author: {
+        _ref: "someID"
+      }   
+      },
   }]
-  
   fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`, {
     method: 'post',
     headers: {
@@ -30,16 +46,14 @@ const Post = ({post} : Props) => {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.error(error))
-
-
-
+}
 
   return (
     <div className="z-0 text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
               <div className=" px-3 flex items-center mb-5">
-        <Link href = {`/profiles/${post.author.name}`}><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
+        <Link href = {`/profiles/${post.author.slug.current}`}><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
         <div className="ml-4 flex flex-col">
-            <Link href = {`/profiles/${post.author.name}`} className = "font-semibold text-sm text-white hover:text-[#7de2d1]">{post.author.name}</Link> 
+            <Link href = {`/profiles/${post.author.slug.current}`} className = "font-semibold text-sm text-white hover:text-[#7de2d1]">{post.author.name}</Link> 
             <h1 className='text-xs'>{post.categories.map((category) => 
             <span><Link className = "hover:text-[#339989]" href = {`/categories/${category.title}`}>{category.title}</Link> &#8226; </span>
             )}
@@ -68,7 +82,7 @@ const Post = ({post} : Props) => {
       <div className = "mt-5 flex flex-row text-sm font-bold">112 Likes</div>
 
       <div className="mt-5 flex flex-row font-medium text-white text-gray-800 leading-relaxed">
-          <h4 className = "text-white text-sm font-bold mr-5">{post.author.name}</h4>
+          <h4 className = "text-white text-sm font-bold mr-5">{post.author.slug.current}</h4>
        <h6 className = "text-white text-sm">{post.title}</h6>
        <h6 className = "text-white text-sm">{post.description}</h6>
 
