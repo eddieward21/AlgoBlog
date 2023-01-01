@@ -49,7 +49,7 @@ async function addPost() {
 }
 
   return (
-    <div className="z-0 text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
+    <div className="z-40 text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
               <div className=" px-3 flex items-center mb-5">
         <Link href = {`/profiles/${post.author.slug.current}`}><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
         <div className="ml-4 flex flex-col">
