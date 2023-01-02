@@ -49,7 +49,7 @@ async function addPost() {
 }
 
   return (
-    <div className="z-40 text-white relative py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
+    <div className="text-white py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
               <div className=" px-3 flex items-center mb-5">
         <Link href = {`/profiles/${post.author.slug.current}`}><img src = {urlFor(post.author.image).url()} alt="Profile image" className="w-10 h-10 rounded-full object-cover hover:opacity-75 border border-[#fffafb]" /></Link>
         <div className="ml-4 flex flex-col">
@@ -62,7 +62,7 @@ async function addPost() {
             <div className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
 
       </div>
-    <div className="relative rounded-t-lg overflow-hidden">
+    <div className="rounded-t-lg overflow-hidden">
       <img src = {urlFor(post.mainImage).url()} alt="Post image" className="w-full h-full object-cover" />
     </div>
     <div className="px-3 ">
