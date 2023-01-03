@@ -28,19 +28,22 @@ const Navbar = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  async function addPost() {
+  async function addPost(event:any) {
+    event.preventDefault()
+    console.log(process.env.TOKEN)
+    console.log(title)
     const mutations = [{
       createOrReplace: {
-        _type: '"POST',
-        title: 'Something',
+        _type: 'post',
+        title: title,
         categories: {
           _type: "reference",
-          _ref: "abc123"      
+          _ref: "d88608e6-3958-4450-bdf4-b922254b6e40"      
         },
         author: {
-          _ref: "someID"
+          _rev: "bxwmTAgFl4TGuTvm9OXgSS"
         }   
-        },
+      },
     }]
     fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`, {
       method: 'post',
@@ -75,7 +78,7 @@ const Navbar = () => {
                     Add New Problem
                   </h3>
                   <div className="mt-2">
-                    <input type="text" placeholder="Title" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
+                    <input onChange={(event) => setTitle(event.target.value)} type="text" placeholder="Title" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
                     <input type="text" placeholder="Description" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
                     <input type="text" placeholder="Category" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
                     <input type="text" placeholder="Hint" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
