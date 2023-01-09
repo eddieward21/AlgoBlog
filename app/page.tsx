@@ -22,7 +22,7 @@ const categories = await client.fetch(query)
   return (
     <div className = "flex flex-col">
     <div className = "bg-[#131515] font-poppins grid grid-cols-12 h-max">
-      <Navbar/>
+      <Navbar categories = {categories}/>
       <Main/>
       <Categories categories = {categories}/>
     </div>

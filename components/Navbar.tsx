@@ -9,9 +9,21 @@ import { HeartIcon, PlusCircleIcon, UserCircleIcon, HomeIcon, XMarkIcon } from '
 import {PlusIcon } from '@heroicons/react/24/solid'
 import Modal from './Modal'
 import addPost from './Post'
+import {SubmitHandler, useForm} from 'react-hook-form'
 
+interface IFormInput {
+  _id: string
+  title: string
+  body: string
+}
+type Props = {
+  categories: Category[]
+}
 
-const Navbar = () => {
+const Navbar = ({categories}: Props) => {
+
+  const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
+
   
   const [showModal, setShowModal] = useState(false)
 
@@ -23,40 +35,21 @@ const Navbar = () => {
     setShowModal(false)      
     console.log(showModal)
   }
+  const onSubmit:SubmitHandler<IFormInput> = async(data) => {
+    //create a fetch method takes in two parameters: the api route and data
+    //pass in JSON.stringify body
+    //method : "POST"
+    const res = await fetch('api/posts/addPost', {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(() => console.log("Success"))
+    .catch((error) => console.log(error))
 
-  const [title, setTitle] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-
-  async function addPost(event:any) {
-    event.preventDefault()
-    console.log(process.env.TOKEN)
-    console.log(title)
-    const mutations = [{
-      createOrReplace: {
-        _type: 'post',
-        title: title,
-        categories: {
-          _type: "reference",
-          _ref: "d88608e6-3958-4450-bdf4-b922254b6e40"      
-        },
-        author: {
-          _rev: "bxwmTAgFl4TGuTvm9OXgSS"
-        }   
-      },
-    }]
-    fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`, {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${process.env.TOKEN}`
-      },
-      body: JSON.stringify({mutations})
-    })
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.error(error))
+    console.log(data.title)
+    console.log("Hello world!")
   }
+
+  
   return (
     <nav className = "flex flex-col h-screen text-white font-bold py-3 col-span-3 bg-black pl-5 w-full pr-10 py-10 border-r-2 sticky top-0 border-r border-gray-500">
       {showModal && (
@@ -68,7 +61,7 @@ const Navbar = () => {
           <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#xA0;
           <div className="z-50 inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <div className='w-full text-black flex flex-row'><p className='ml-auto'><XMarkIcon onClick={hidePostModal} className = "cursor-pointer hover:text-gray" height={20} width={20}/></p></div>
-            <form className = "">
+            <div>
               <div className = "">
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-black">
                 <PlusIcon className='' height={30} width={30}/>
@@ -77,17 +70,26 @@ const Navbar = () => {
                   <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                     Add New Problem
                   </h3>
-                  <div className="mt-2">
-                    <input onChange={(event) => setTitle(event.target.value)} type="text" placeholder="Title" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
-                    <input type="text" placeholder="Description" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
-                    <input type="text" placeholder="Category" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
-                    <input type="text" placeholder="Hint" className="mt-3 w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out" />
+                  <form onSubmit={handleSubmit(onSubmit)} className="mt-2">
+                    <input {...register("title", {required:true})} type="text" placeholder="Title" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
+                    <input {...register("body", {required:true})} type="text" placeholder="Body" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
+                    <select name="" placeholder='Category' id="" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2">
+                      {categories.map((category) =>
+                      <option value={category.title}>{category.title}</option>
+                      )}
+
+                    </select>
+
                     <button className = "flex justify-center items-center text-black my-3"><PlusCircleIcon className='' height={20} width={20}/>Add Hint</button>
-                    <button onClick={addPost} className='w-full py-2 bg-green-100'>Post</button>
-                  </div>
+                    {errors.title && (
+                    <p className = "text-red-500 text-sm">Please enter a title</p>
+                    )}
+                 <button type = "submit" className='w-full py-2 bg-green-400'>Post</button>
+
+                  </form>
                 </div>
               </div>
-              </form>
+              </div>
               </div>
               </div>
               </div>      

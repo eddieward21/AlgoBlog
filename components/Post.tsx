@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
@@ -21,32 +20,6 @@ async function Post({post} : Props) {
   `
 const categories = await client.fetch(query)
 
-async function addPost() {
-  const mutations = [{
-    createOrReplace: {
-      _type: '"POST',
-      title: 'Something',
-      categories: {
-        _type: "reference",
-        _ref: "abc123"      
-      },
-      author: {
-        _ref: "someID"
-      }   
-      },
-  }]
-  fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`, {
-    method: 'post',
-    headers: {
-      'Content-type': 'application/json',
-      Authorization: `Bearer ${process.env.TOKEN}`
-    },
-    body: JSON.stringify({mutations})
-  })
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.error(error))
-}
 
   return (
     <div className="text-white py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
