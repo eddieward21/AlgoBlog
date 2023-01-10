@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const {title, body} = JSON.parse(req.body)
+    const {title, body, approach, solution, hint} = JSON.parse(req.body)
     const slug = {
         _type: 'slug',
         current: title,
@@ -24,8 +24,18 @@ export default async function handler(
         _type: "post",
         title: title,
         body: body,
-        slug: slug,
-        //mainImage: "https:/cdn.sanity.io/images/4whsb59p/production/6cee0a5b64bd190b6e712372ccae23cfb4377972-576x472.png",
+        slug: slug, 
+        /*
+        mainImage: {
+            asset: {
+              _type: 'image',
+              asset: {
+                _type: 'file',
+                file: "https://cdn.sanity.io/images/4whsb59p/production/6cee0a5b64bd190b6e712372ccae23cfb4377972-576x472.png"
+              }
+            }
+          },
+          */
         categories: [
             {
               _type: "reference",

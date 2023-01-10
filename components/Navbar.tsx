@@ -16,6 +16,9 @@ interface IFormInput {
   _id: string
   title: string
   body: string
+  hint: string
+  approach: string
+  solution: string
 }
 type Props = {
   categories: Category[]
@@ -53,6 +56,7 @@ const Navbar = ({categories}: Props) => {
 
     console.log(data.title)
     console.log("Hello world!")
+    setShowModal(!showModal)
 
   }
 
@@ -84,8 +88,11 @@ const Navbar = ({categories}: Props) => {
                       {categories.map((category) =>
                       <option value={category.title}>{category.title}</option>
                       )}
-
                     </select>
+                    <input {...register("hint", {required:true})} type="text" placeholder="Hint" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
+                    <input {...register("approach", {required:true})} type="text" placeholder="Approach" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
+                    <textarea {...register("solution", {required:true})}  placeholder="Solution" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
+
 
                     <button className = "flex justify-center items-center text-black my-3"><PlusCircleIcon className='' height={20} width={20}/>Add Hint</button>
                     {errors.title && (

@@ -25,14 +25,7 @@ export default defineType({
       type: 'reference',
       to: {type: 'author'},
     }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
+
     defineField({
       name: 'categories',
       title: 'Categories',
@@ -48,6 +41,16 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'string',
+    }),
+    defineField({
+      name: 'hint',
+      title: 'Hint',
+      type: 'string',
+    }),
+    defineField({
+      name: 'showHint',
+      title: 'Show Hint',
+      type: 'boolean',
     }),
     defineField({
       name: 'approach',

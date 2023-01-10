@@ -14,7 +14,7 @@ export default async function handler(
 
     try {
 
-    await client.delete("4sIW2EWSGbpwU8wGxaKwVp")
+    await client.delete("eUXY84jhmlWBsLz8n9yjCY")
     .then(() => console.log("document deleted"))
 } catch(error) {
     console.log(error)

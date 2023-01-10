@@ -9,7 +9,7 @@ type Base = {
 }
 
 interface Post extends Base {
-    body: Block[];
+    body: string;
     categories: Category[]
     category:Category
     mainImage: Image
@@ -17,6 +17,12 @@ interface Post extends Base {
     title: string
     description: string
     author: Author
+    hint: string
+    approach: string
+    solution: string
+    showHint: boolean
+    showApproach: boolean
+    showSolution: boolean
 }
 
 interface Author extends Base {

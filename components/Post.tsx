@@ -10,7 +10,7 @@ import Modal from './Modal'
 
 type Props = {
     post: Post
-    body: Block[]
+    body: string
 }
 async function Post({post} : Props) {
   
@@ -19,6 +19,7 @@ async function Post({post} : Props) {
   }
   `
 const categories = await client.fetch(query)
+
 
 
   return (
@@ -36,10 +37,28 @@ const categories = await client.fetch(query)
 
       </div>
     <div className="rounded-t-lg overflow-hidden">
-      <img src = {urlFor(post.mainImage).url()} alt="Post image" className="w-full h-full object-cover" />
+
     </div>
     <div className="px-3 ">
+
+    <div className="py-5 flex flex-row font-medium text-white text-gray-800 leading-relaxed">
+              <div> 
+       <h6 className = "text-white text-lg font-bold">{post.title}</h6>
+       <h6 className = "text-white text-sm">{post.body}</h6>
+
+       <div>
+         <button className = "border border-white-500 px-2 py-1 rounded-full text-white"><p>Show Hint</p></button>
+       {post.showHint && (
+         <h6>{post.hint}</h6>
+       )}
+       </div>
+
+       </div>
+
+
+      </div>
     <div className="flex flex-row w-full h-10 mt-2 flex items-center">
+
 
     <div className="mr-6 text-white-600 text-sm">
           <HandThumbUpIcon height={30} width={30}/>  
@@ -54,14 +73,6 @@ const categories = await client.fetch(query)
       </div>
       <div className = "mt-5 flex flex-row text-sm font-bold">112 Likes</div>
 
-      <div className="mt-5 flex flex-row font-medium text-white text-gray-800 leading-relaxed">
-          <h4 className = "text-white text-sm font-bold mr-5">{post.author.slug.current}</h4>
-       <h6 className = "text-white text-sm">{post.title}</h6>
-       <h6 className = "text-white text-sm">{post.description}</h6>
-
-
-
-      </div>
 
     </div>
   </div>

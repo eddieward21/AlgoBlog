@@ -10,7 +10,7 @@ function Posts({posts}: Props) {
 
   return <div className = "w-10/12">
     {posts.map(post => 
-    <Post post = {post}/>
+    <Post showHint={false} showApproach={false} showSolution={false} post = {post}/>
       )}
   </div>
 }
