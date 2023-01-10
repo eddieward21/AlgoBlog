@@ -10,6 +10,7 @@ import {PlusIcon } from '@heroicons/react/24/solid'
 import Modal from './Modal'
 import addPost from './Post'
 import {SubmitHandler, useForm} from 'react-hook-form'
+import client from '../utils/client'
 
 interface IFormInput {
   _id: string
@@ -21,6 +22,11 @@ type Props = {
 }
 
 const Navbar = ({categories}: Props) => {
+  /*
+  const deleteRes =  fetch('api/posts/deletePost')
+  .then(() => console.log("success"))
+  .catch((error) => console.log(error))
+  */
 
   const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
 
@@ -47,6 +53,7 @@ const Navbar = ({categories}: Props) => {
 
     console.log(data.title)
     console.log("Hello world!")
+
   }
 
   

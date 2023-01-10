@@ -19,12 +19,23 @@ export default async function handler(
     };
 
     try {
+
     await client.create({
         _type: "post",
         title: title,
         body: body,
         slug: slug,
         mainImage: "https:/cdn.sanity.io/images/4whsb59p/production/6cee0a5b64bd190b6e712372ccae23cfb4377972-576x472.png",
+        categories: [
+            {
+              _type: "reference",
+              _ref: "4af19869-d3e8-4d62-be77-e9e61856bd29"
+            },
+            {
+              _type: "reference",
+              _ref: "645caecf-5c84-408b-96b3-5ed409122526"
+            }
+          ],
         author: {
             _type: 'reference',
             _ref: "4d1f4487-d210-4daa-a45a-48ae7dfd33c9"
