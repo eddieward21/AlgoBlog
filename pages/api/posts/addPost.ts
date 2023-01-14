@@ -21,6 +21,9 @@ export default async function handler(
 
     await client.create({
         _type: "post",
+        hint:hint,
+        approach:approach,
+        solution:solution,
         title: title,
         body: body,
         slug: slug, 

@@ -22,6 +22,7 @@ type Props = {
 
   function hintShow() {
     setShowHint(!showHint)
+    console.log(showHint)
   }
   function approachShow() {
     setShowApproach(!showApproach)
@@ -51,7 +52,7 @@ type Props = {
 
     <div className="flex flex-row font-medium text-white text-gray-800 leading-relaxed">
               <div> 
-       <h6 className = "text-white text-xl font-bold">{post.title}</h6>
+       <h6 className = "text-white text-xl font-bold capitalize">{post.title}</h6>
        <h6 className = "text-white text-md font-bold">{post.body}</h6>
 
        <div>
