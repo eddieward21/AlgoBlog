@@ -15,9 +15,10 @@ const Main = async () => {
         ...,
         author->,
           categories[]->
-      }
+      }| order(_createdAt desc) 
       `
-    const posts = await client.fetch(query)
+    const posts = await client.fetch(query)  
+
     const profileQuery = groq`*[_type=='author'] {
       ...,
     }

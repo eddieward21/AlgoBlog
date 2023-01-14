@@ -1,5 +1,5 @@
 'use client'
-
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
@@ -92,6 +92,7 @@ type Props = {
         </div>
       </div>
       <div className = "mt-5 flex flex-row text-sm font-bold">112 Likes</div>
+      <p className = "mt-2 text-xs text-gray-400 uppercase">{moment(post._createdAt).fromNow()}</p>
 
 
     </div>
