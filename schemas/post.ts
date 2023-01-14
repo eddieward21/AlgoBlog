@@ -48,11 +48,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'showHint',
-      title: 'Show Hint',
-      type: 'boolean',
-    }),
-    defineField({
       name: 'approach',
       title: 'Approach',
       type: 'string',

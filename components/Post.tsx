@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
 import {HandThumbUpIcon, ChatBubbleBottomCenterTextIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
@@ -7,20 +9,26 @@ import client from '../utils/client'
 import { groq } from 'next-sanity'
 import Modal from './Modal'
 
-
 type Props = {
     post: Post
     body: string
 }
-async function Post({post} : Props) {
-  
-  const query = groq`*[_type=='category'] {
-    ...,
+ function Post({post} : Props) {
+
+  const [showHint, setShowHint] = useState(false)
+  const [showApproach, setShowApproach] = useState(false)
+  const [showSolution, setShowSolution] = useState(false)
+
+
+  function hintShow() {
+    setShowHint(!showHint)
   }
-  `
-const categories = await client.fetch(query)
-
-
+  function approachShow() {
+    setShowApproach(!showApproach)
+  }
+  function solutionShow() {
+    setShowSolution(!showSolution)
+  }
 
   return (
     <div className="text-white py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
@@ -41,16 +49,28 @@ const categories = await client.fetch(query)
     </div>
     <div className="px-3 ">
 
-    <div className="py-5 flex flex-row font-medium text-white text-gray-800 leading-relaxed">
+    <div className="flex flex-row font-medium text-white text-gray-800 leading-relaxed">
               <div> 
-       <h6 className = "text-white text-lg font-bold">{post.title}</h6>
-       <h6 className = "text-white text-sm">{post.body}</h6>
+       <h6 className = "text-white text-xl font-bold">{post.title}</h6>
+       <h6 className = "text-white text-md font-bold">{post.body}</h6>
 
        <div>
-         <button className = "border border-white-500 px-2 py-1 rounded-full text-white"><p>Show Hint</p></button>
-       {post.showHint && (
-         <h6>{post.hint}</h6>
-       )}
+       <button onClick = {hintShow} className = "text-gray-700 hover:text-white hover"><p className = "text-sm">Show Hint</p></button>
+         {showHint && (
+           <h1 className = "text-white">{post.hint}</h1>
+         )}
+       </div>
+       <div>
+       <button onClick = {approachShow} className = "text-gray-700 hover:text-white hover"><p className = "text-sm">Show Approach</p></button>
+         {showApproach && (
+           <h1 className = "text-white">{post.approach}</h1>
+         )}
+       </div>
+       <div>
+       <button onClick = {solutionShow} className = "text-gray-700 hover:text-white hover"><p className = "text-sm">Show Solution</p></button>
+         {showSolution && (
+           <h1 className = "text-white">{post.solution}</h1>
+         )}
        </div>
 
        </div>

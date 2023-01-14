@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import client from '../../../utils/client'
-import slugify from 'some-off-the-shelf-slugifier'
 import urlFor from '../../../utils/urlFor'
 
 type Data = {
