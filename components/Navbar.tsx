@@ -51,12 +51,8 @@ const Navbar = ({categories}: Props) => {
     const res = await fetch('api/posts/addPost', {
       method: "POST",
       body: JSON.stringify(data)
-    }).then(() => console.log("Success"))
+    }).then(() => (setShowModal(!showModal))).then(() => console.log("success!", data))
     .catch((error) => console.log(error))
-
-    console.log(data.title)
-    console.log("Hello world!")
-    setShowModal(!showModal)
 
   }
 
