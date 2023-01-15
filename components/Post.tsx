@@ -14,12 +14,28 @@ type Props = {
     post: Post
     body: string
 }
+
+
  function Post({post} : Props) {
 
+
+
+  const [showPopup, setShowPopup] = useState(false)
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [showPopup]);
   const [showHint, setShowHint] = useState(true)
   const [showApproach, setShowApproach] = useState(true)
   const [showSolution, setShowSolution] = useState(true)
 
+  function popupShow() {
+    setShowPopup(!showPopup)
+    console.log(showPopup)
+  }
 
   function hintShow() {
     setShowHint(!showHint)
@@ -43,8 +59,17 @@ type Props = {
     )}
     </h1>
     </div>
-    <div className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
+    <div onClick = {popupShow} className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
+      {showPopup && (
+        <div className="fixed top-0 bg-gray-200 bg-opacity-90 left-0 h-full w-full flex items-center justify-center">
+          <div className="flex flex-col bg-white shadow-lg w-96">
+          <button className="text-black border-b font-bold border-gray-500 py-2 px-4 w-full ">Edit</button>
+            <button className="text-black border-b border-gray-500 font-bold py-2 px-4 w-full ">Delete</button>
+            <button className="text-red-500 font-bold py-2 px-4 w-full float-right" onClick={popupShow}>Close</button>
 
+          </div>
+        </div>
+      )}
 </div>
 
 <div className="px-3 w-full">

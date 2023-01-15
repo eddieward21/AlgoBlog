@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from "next/link"
 import Image from 'next/image'
 import Login from './Login'
@@ -11,6 +11,7 @@ import Modal from './Modal'
 import addPost from './Post'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import client from '../utils/client'
+
 
 interface IFormInput {
   _id: string
@@ -35,6 +36,14 @@ const Navbar = ({categories}: Props) => {
 
   
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [showModal]);
 
   const showPostModal = () => {
     setShowModal(!showModal)      
