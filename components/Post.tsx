@@ -52,7 +52,7 @@ type Props = {
 <div className="flex flex-row font-medium text-white text-gray-800 leading-relaxed w-full">
       <div className='w-full'> 
 <h6 className = "text-white text-xl font-bold capitalize">{post.title}</h6>
-<h6 className = "text-white text-md font-bold">{post.body}</h6>
+<h6 className = "text-gray-400 text-md">{post.body}</h6>
 
 <div className = "text-white my-2 text-sm">
 {
