@@ -9,6 +9,7 @@ type Base = {
 }
 
 interface Post extends Base {
+    includes(search: string): unknown;
     body: string;
     categories: Category[]
     category:Category
