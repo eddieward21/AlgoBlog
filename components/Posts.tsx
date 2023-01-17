@@ -21,10 +21,10 @@ function Posts({posts}: Props) {
     <input type="text" onChange={(e) => setSearch(e.target.value)} className = "px-2 outline-0 w-full bg-gray-800 text-white" placeholder='Search Posts' />
     </div>
     <div className = "mt-5 text-white w-full h-8 flex flex-row justify-between align-center">
-      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Lists</p> <ChevronUpIcon height={10} width={20}/></div>
-      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Difficulty</p> <ChevronUpIcon height={10} width={20}/></div>
-      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Categories</p> <ChevronUpIcon height={10} width={20}/></div>
-      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Favorites</p> <ChevronUpIcon height={10} width={20}/></div>
+      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Lists</p> <ChevronDownIcon height={10} width={20}/></div>
+      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Difficulty</p> <ChevronDownIcon height={10} width={20}/></div>
+      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Categories</p> <ChevronDownIcon height={10} width={20}/></div>
+      <div className = "flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800"><p>Favorites</p> <ChevronDownIcon height={10} width={20}/></div>
 
     </div>
     {posts.filter((post) => {

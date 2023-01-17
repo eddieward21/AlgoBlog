@@ -86,14 +86,14 @@ type Props = {
           <div onClick = {hintShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold"> Show Hint</div>
-           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
           </div>
           : 
           <div onClick = {hintShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold"> Hide Hint</div>
-           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
                     <p className = "text-sm mt-3">{post.hint}</p>
           </div>
@@ -108,14 +108,14 @@ type Props = {
           <div onClick = {approachShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold"> Show Approach</div>
-           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
           </div>
           : 
           <div onClick = {approachShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold"> Hide Approach</div>
-           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
                     <p className = "text-sm mt-3">{post.approach}</p>
           </div>
@@ -130,14 +130,14 @@ type Props = {
           <div onClick = {solutionShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold">Show Solution</div>
-           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
           </div>
           : 
           <div onClick = {solutionShow}className='w-full bg-gray-900 cursor-pointer rounded px-3 py-2'>
           <div className = " flex flex-row items-center justify-between">
           <div className = "font-bold"> Hide Solution</div>
-           <div><ChevronDownIcon className='font-bold' height={17} width={30} /> </div>
+           <div><ChevronUpIcon className='font-bold' height={17} width={30} /> </div>
           </div> 
                     <p className = "text-sm mt-3">{post.solution}</p>
           </div>
