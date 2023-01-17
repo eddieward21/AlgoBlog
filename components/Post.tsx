@@ -3,7 +3,7 @@ import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
-import {HandThumbUpIcon, ChatBubbleBottomCenterTextIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
+import {HandThumbUpIcon, ChatBubbleBottomCenterIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
 import {ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import client from '../utils/client'
@@ -157,7 +157,7 @@ type Props = {
   <HandThumbUpIcon height={30} width={30}/>  
 </div>
 <Link href={`/posts/${encodeURIComponent(post.slug.current)}`}  className="text-white-600 text-sm">
-<ChatBubbleBottomCenterTextIcon className = "hover:text-gray"height={30} width={30}/> 
+<ChatBubbleBottomCenterIcon className = "hover:text-gray"height={30} width={30}/> 
 </Link>
 
 <div className="ml-auto text-white-600 text-sm">

@@ -62,6 +62,8 @@ const Navbar = ({categories}: Props) => {
       body: JSON.stringify(data)
     }).then(() => (setShowModal(!showModal))).then(() => console.log("success!", data))
     .catch((error) => console.log(error))
+    setShowModal(false)
+    console.log("Modal Closed?")
 
   }
 
