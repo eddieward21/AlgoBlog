@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const {title, body, approach, solution, hint} = JSON.parse(req.body)
+    const {title, body, approach, solution, hint, category} = JSON.parse(req.body)
     const slug = {
         _type: 'slug',
         current: title,
@@ -41,14 +41,9 @@ export default async function handler(
         categories: [
             {
               _type: "reference",
-              _ref: "4af19869-d3e8-4d62-be77-e9e61856bd29",
-              _key: "4af19869-d3e8-4d62-be77-e9e61856bd29"
+              _ref: category,
+              _key: category
             },
-            {
-              _type: "reference",
-              _ref: "645caecf-5c84-408b-96b3-5ed409122526",
-              _key: "645caecf-5c84-408b-96b3-5ed409122526"
-            }
           ],
         author: {
             _type: 'reference',
@@ -58,4 +53,5 @@ export default async function handler(
 } catch(error) {
     console.log(error)
 }
+console.log("CATEGORY REF FROM API: " + category)
 }

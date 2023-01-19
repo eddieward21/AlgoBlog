@@ -20,6 +20,7 @@ interface IFormInput {
   hint: string
   approach: string
   solution: string
+  category: string
 }
 type Props = {
   categories: Category[]
@@ -91,9 +92,9 @@ const Navbar = ({categories}: Props) => {
                   <form onSubmit={handleSubmit(onSubmit)} className="mt-2">
                     <input {...register("title", {required:true})} type="text" placeholder="Title" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
                     <input {...register("body", {required:true})} type="text" placeholder="Body" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
-                    <select name="" placeholder='Category' id="" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2">
+                    <select {...register("category", {required:true})} name="" placeholder='Category' id="" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2">
                       {categories.map((category) =>
-                      <option value={category.title}>{category.title}</option>
+                      <option value={category._id}>{category.title}</option>
                       )}
                     </select>
                     <input {...register("hint", {required:true})} type="text" placeholder="Hint" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
@@ -101,7 +102,6 @@ const Navbar = ({categories}: Props) => {
                     <textarea {...register("solution", {required:true})}  placeholder="Solution" className="w-full px-3 py-2 rounded-md text-gray-700 bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out mb-2" />
 
 
-                    <button className = "flex justify-center items-center text-black my-3"><PlusCircleIcon className='' height={20} width={20}/>Add Hint</button>
                     {errors.title && (
                     <p className = "text-red-500 text-sm">Please enter a title</p>
                     )}

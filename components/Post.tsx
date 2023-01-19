@@ -3,7 +3,7 @@ import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import urlFor from '../utils/urlFor'
-import {HandThumbUpIcon, ChatBubbleBottomCenterIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
+import {HandThumbUpIcon, XMarkIcon ,ChatBubbleBottomCenterIcon, BookmarkIcon,EllipsisHorizontalIcon} from '@heroicons/react/24/outline'
 import {ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import client from '../utils/client'
@@ -28,6 +28,11 @@ type Props = {
       document.body.style.overflow = "initial";
     }
   }, [showPopup]);
+
+  const [showEditModal, setShowEditModal] = useState(false)
+  function editModalShow() {
+    setShowEditModal(!false);
+  }
   const [showHint, setShowHint] = useState(true)
   const [showApproach, setShowApproach] = useState(true)
   const [showSolution, setShowSolution] = useState(true)
@@ -61,11 +66,27 @@ type Props = {
     </div>
     <div onClick = {popupShow} className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
       {showPopup && (
-        <div className="fixed top-0 bg-gray-200 bg-opacity-90 left-0 h-full w-full flex items-center justify-center">
-          <div className="flex flex-col bg-white shadow-lg w-96">
-          <button className="text-black border-b font-bold border-gray-500 py-2 px-4 w-full ">Edit</button>
-            <button className="text-black border-b border-gray-500 font-bold py-2 px-4 w-full ">Delete</button>
-            <button className="text-red-500 font-bold py-2 px-4 w-full float-right" onClick={popupShow}>Close</button>
+        <div className="fixed top-0 bg-gray-500 bg-opacity-90 left-0 h-full w-full flex items-center justify-center">
+          <div className="flex flex-col bg-white shadow-lg w-96 rounded">
+          <button onClick = {editModalShow} className="border-b font-bold border-gray-500 py-2 px-4 w-full text-green-700">Edit</button>
+            {showEditModal && (
+                  <div className="fixed top-0 bg-transparent left-0 h-full w-full flex items-center justify-center">
+                <div className="flex flex-col bg-white shadow-lg w-1/3 h-80 py-2 rounded">
+
+            <form action="" className = "flex flex-col w-full px-2 h-full">
+              <div className = "text-black py-2 flex w-full"><p onClick={editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</p></div>
+
+              <input className= "py-2 text-black" placeholder={post.title} type="text" />
+              <input className= "py-2 text-black" placeholder={post.body} type="text" />
+              <input className= "py-2 text-black" placeholder={post.hint} type="text" />
+              <input className= "py-2 text-black" placeholder={post.approach} type="text" />
+              <textarea className = "py-2 text-black" cols={3} rows={4} placeholder={post.solution} />
+            </form>
+            </div>
+            </div>
+            )}
+            <button className="border-b border-gray-500 font-bold py-2 px-4 w-full text-red-500">Delete</button>
+            <button className="text-gray-700 font-bold py-2 px-4 w-full float-right" onClick={popupShow}>Close</button>
 
           </div>
         </div>
