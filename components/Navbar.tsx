@@ -58,14 +58,13 @@ const Navbar = ({categories}: Props) => {
     //create a fetch method takes in two parameters: the api route and data
     //pass in JSON.stringify body
     //method : "POST"
+    setShowModal(false);
     const res = await fetch('api/posts/addPost', {
       method: "POST",
       body: JSON.stringify(data)
-    }).then(() => (setShowModal(!showModal))).then(() => console.log("success!", data))
+    }).then(() => console.log("success!", data))
     .catch((error) => console.log(error))
-    setShowModal(false)
     console.log("Modal Closed?")
-
   }
 
   
