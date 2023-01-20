@@ -29,6 +29,11 @@ type Props = {
     }
   }, [showPopup]);
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  function deleteModalShow() {
+    setShowDeleteModal(!false);
+  }
+
   const [showEditModal, setShowEditModal] = useState(false)
   function editModalShow() {
     setShowEditModal(!false);
@@ -74,7 +79,7 @@ type Props = {
                 <div className="flex flex-col bg-white shadow-lg w-1/3 h-80 py-2 rounded">
 
             <form action="" className = "flex flex-col w-full px-2 h-full">
-              <div className = "text-black py-2 flex w-full"><p onClick={editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</p></div>
+              <div className = "text-black py-2 flex w-full"><button className = "mr-auto" onClick = {editModalShow}>Cancel</button><button onClick= {editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</button></div>
 
               <input className= "py-2 text-black" placeholder={post.title} type="text" />
               <input className= "py-2 text-black" placeholder={post.body} type="text" />
@@ -85,7 +90,21 @@ type Props = {
             </div>
             </div>
             )}
-            <button className="border-b border-gray-500 font-bold py-2 px-4 w-full text-red-500">Delete</button>
+            <button className="border-b border-gray-500 font-bold py-2 px-4 w-full text-red-500" onClick={deleteModalShow}>Delete</button>
+            {showDeleteModal && (
+                  <div className="fixed top-0 bg-transparent left-0 h-full w-full flex items-center justify-center">
+                <div className="flex flex-col bg-white shadow-lg w-1/3 rounded">
+            <form action="" className = "flex flex-col w-full h-full">
+                <div className = "flex flex-col items-center text-black h-full w-full">
+                  <h1 className = "mb-2 mt-5 text-xl font-bold ">Delete Post?</h1>
+                  <p className = "mb-5">Are you sure you want to delete this post?</p>
+                  <div className = "font-bold text-red-500 w-full py-3 border-t border-b border-gray-500 border-t border-gray-500 flex items-center justify-center cursor-pointer">Delete</div>
+                  <button className = "w-full py-3 border-b border-gray-500 border-gray-500 flex items-center justify-center" onClick = {deleteModalShow}>Cancel</button>
+                </div>
+            </form>
+            </div>
+            </div>
+            )}
             <button className="text-gray-700 font-bold py-2 px-4 w-full float-right" onClick={popupShow}>Close</button>
 
           </div>
