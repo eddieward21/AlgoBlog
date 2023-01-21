@@ -11,10 +11,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const postId = JSON.parse(req.body)
 
     try {
 
-    await client.delete("eUXY84jhmlWBsLz8n9yjCY")
+    await client.delete(postId)
     .then(() => console.log("document deleted"))
 } catch(error) {
     console.log(error)

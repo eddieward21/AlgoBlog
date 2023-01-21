@@ -18,8 +18,6 @@ type Props = {
 
  function Post({post} : Props) {
 
-
-
   const [showPopup, setShowPopup] = useState(false)
   useEffect(() => {
     if (showPopup) {
@@ -29,7 +27,7 @@ type Props = {
     }
   }, [showPopup]);
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   function deleteModalShow() {
     setShowDeleteModal(!false);
   }
@@ -57,6 +55,8 @@ type Props = {
   function solutionShow() {
     setShowSolution(!showSolution)
   }
+
+  const [id, setId] = useState("")
 
   return (
       <div className="text-white py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
@@ -98,7 +98,15 @@ type Props = {
                 <div className = "flex flex-col items-center text-black h-full w-full">
                   <h1 className = "mb-2 mt-5 text-xl font-bold ">Delete Post?</h1>
                   <p className = "mb-5">Are you sure you want to delete this post?</p>
-                  <div className = "font-bold text-red-500 w-full py-3 border-t border-b border-gray-500 border-t border-gray-500 flex items-center justify-center cursor-pointer">Delete</div>
+                  <div className = "font-bold text-red-500 w-full py-3 border-t border-b border-gray-500 border-t border-gray-500 flex items-center justify-center cursor-pointer" onClick={
+                    async(data) => {
+                    deleteModalShow(); 
+                    const res = await fetch('api/posts/deletePost', {
+                    method: "POST",
+                    body: JSON.stringify(post._id)
+                  }).then(() => console.log("success!", data))
+                  .catch((error) => console.log(error))}}>
+                    Delete</div>
                   <button className = "w-full py-3 border-b border-gray-500 border-gray-500 flex items-center justify-center" onClick = {deleteModalShow}>Cancel</button>
                 </div>
             </form>
