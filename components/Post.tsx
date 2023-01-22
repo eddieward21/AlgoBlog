@@ -9,12 +9,21 @@ import Link from 'next/link'
 import client from '../utils/client'
 import { groq } from 'next-sanity'
 import Modal from './Modal'
+import {SubmitHandler, useForm} from 'react-hook-form'
 
 type Props = {
     post: Post
     body: string
 }
-
+interface IFormInput {
+  _id: string
+  title: string
+  body: string
+  hint: string
+  approach: string
+  solution: string
+  category: string
+}
 
  function Post({post} : Props) {
 
@@ -55,8 +64,21 @@ type Props = {
   function solutionShow() {
     setShowSolution(!showSolution)
   }
+  const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
 
-  const [id, setId] = useState("")
+  const onSubmit:SubmitHandler<IFormInput> = async(data) => {
+    //create a fetch method takes in two parameters: the api route and data
+    //pass in JSON.stringify body
+    //method : "POST"
+
+    const res = await fetch('api/posts/editPost', {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(() => console.log("success!", data))
+    .catch((error) => console.log(error))
+    console.log("Modal Closed?")
+  }
+
 
   return (
       <div className="text-white py-6 rounded-lg bg-black mt-5 mb-5 border border-gray-500">
@@ -72,25 +94,28 @@ type Props = {
     <div onClick = {popupShow} className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
       {showPopup && (
         <div className="fixed top-0 bg-gray-500 bg-opacity-90 left-0 h-full w-full flex items-center justify-center">
-          <div className="flex flex-col bg-white shadow-lg w-96 rounded">
-          <button onClick = {editModalShow} className="border-b font-bold border-gray-500 py-2 px-4 w-full text-green-700">Edit</button>
+          <div className="flex flex-col bg-white shadow-lg w-1/3 rounded">
+          <button onClick = {editModalShow} className="border-b font-bold border-gray-500 px-4 w-full text-green-700 py-4">Edit</button>
             {showEditModal && (
                   <div className="fixed top-0 bg-transparent left-0 h-full w-full flex items-center justify-center">
-                <div className="flex flex-col bg-white shadow-lg w-1/3 h-80 py-2 rounded">
+                <div className="flex flex-col bg-white shadow-lg w-1/3 h-4/6 py-2 rounded">
 
-            <form action="" className = "flex flex-col w-full px-2 h-full">
+            <form action="" onSubmit={handleSubmit(onSubmit)} className = "flex flex-col w-full px-2 h-full justify-between	">
               <div className = "text-black py-2 flex w-full"><button className = "mr-auto" onClick = {editModalShow}>Cancel</button><button onClick= {editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</button></div>
-
-              <input className= "py-2 text-black" placeholder={post.title} type="text" />
-              <input className= "py-2 text-black" placeholder={post.body} type="text" />
-              <input className= "py-2 text-black" placeholder={post.hint} type="text" />
-              <input className= "py-2 text-black" placeholder={post.approach} type="text" />
-              <textarea className = "py-2 text-black" cols={3} rows={4} placeholder={post.solution} />
+              <h1 className = "text-xl mb-2 font-bold text-center text-black">Edit Post</h1>
+              <input type="hidden" {...register("_id", {required:true})} />
+              <input {...register("title", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.title} placeholder={"Problem Name"} type="text" />
+              <input  {...register("body", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue= {post.body} placeholder={post.body} type="text" />
+              <select className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.approach} placeholder={post.approach}/>
+              <input  {...register("hint", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.hint} placeholder={post.hint} type="text" />
+              <input  {...register("approach", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.approach} placeholder={post.approach} type="text" />
+              <textarea  {...register("solution", {required:true})} className = "px-2 py-1 text-black mb-2 border border-gray-500 rounded" cols={3} rows={4} defaultValue = {post.solution} placeholder={post.solution} />
+              <button type = "submit" className = "rounded bg-green-400 text-white w-full py-2">Confirm</button>
             </form>
             </div>
             </div>
             )}
-            <button className="border-b border-gray-500 font-bold py-2 px-4 w-full text-red-500" onClick={deleteModalShow}>Delete</button>
+            <button className="border-b border-gray-500 font-bold px-4 w-full text-red-600 py-4" onClick={deleteModalShow}>Delete</button>
             {showDeleteModal && (
                   <div className="fixed top-0 bg-transparent left-0 h-full w-full flex items-center justify-center">
                 <div className="flex flex-col bg-white shadow-lg w-1/3 rounded">
@@ -100,7 +125,8 @@ type Props = {
                   <p className = "mb-5">Are you sure you want to delete this post?</p>
                   <div className = "font-bold text-red-500 w-full py-3 border-t border-b border-gray-500 border-t border-gray-500 flex items-center justify-center cursor-pointer" onClick={
                     async(data) => {
-                    deleteModalShow(); 
+                    setShowEditModal(false);
+                    setShowDeleteModal(false);
                     const res = await fetch('api/posts/deletePost', {
                     method: "POST",
                     body: JSON.stringify(post._id)
@@ -113,7 +139,7 @@ type Props = {
             </div>
             </div>
             )}
-            <button className="text-gray-700 font-bold py-2 px-4 w-full float-right" onClick={popupShow}>Close</button>
+            <button className="text-gray-700 font-bold py-4 px-4 w-full float-right" onClick={popupShow}>Close</button>
 
           </div>
         </div>
