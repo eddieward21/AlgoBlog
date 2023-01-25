@@ -22,7 +22,6 @@ interface IFormInput {
   hint: string
   approach: string
   solution: string
-  category: string
 }
 
  function Post({post} : Props) {
@@ -70,7 +69,7 @@ interface IFormInput {
     //create a fetch method takes in two parameters: the api route and data
     //pass in JSON.stringify body
     //method : "POST"
-
+    setShowEditModal(false);
     const res = await fetch('api/posts/editPost', {
       method: "POST",
       body: JSON.stringify(data)
@@ -103,13 +102,15 @@ interface IFormInput {
             <form action="" onSubmit={handleSubmit(onSubmit)} className = "flex flex-col w-full px-2 h-full justify-between	">
               <div className = "text-black py-2 flex w-full"><button className = "mr-auto" onClick = {editModalShow}>Cancel</button><button onClick= {editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</button></div>
               <h1 className = "text-xl mb-2 font-bold text-center text-black">Edit Post</h1>
-              <input type="hidden" {...register("_id", {required:true})} />
-              <input {...register("title", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.title} placeholder={"Problem Name"} type="text" />
+              <input type="hidden" {...register("_id", {required:true})}/>
+              <input {...register("title", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.title}  type="text" />
               <input  {...register("body", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue= {post.body} placeholder={post.body} type="text" />
-              <select className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.approach} placeholder={post.approach}/>
               <input  {...register("hint", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.hint} placeholder={post.hint} type="text" />
               <input  {...register("approach", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.approach} placeholder={post.approach} type="text" />
               <textarea  {...register("solution", {required:true})} className = "px-2 py-1 text-black mb-2 border border-gray-500 rounded" cols={3} rows={4} defaultValue = {post.solution} placeholder={post.solution} />
+              {errors && (
+                <span className = "my-2 text-center text-red-500">ERRROR</span>
+              )}
               <button type = "submit" className = "rounded bg-green-400 text-white w-full py-2">Confirm</button>
             </form>
             </div>

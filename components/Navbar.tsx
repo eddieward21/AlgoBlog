@@ -22,6 +22,7 @@ interface IFormInput {
   solution: string
   category: string
 }
+
 type Props = {
   categories: Category[]
 }
