@@ -6,7 +6,11 @@ import Profiles from '../components/Profiles'
 import client from '../utils/client'
 import Footer from '../components/Footer'
 import Categories from '../components/Categories'
-async function HomePage() {
+import { SessionProvider } from "next-auth/react"
+
+
+
+async function HomePage()  {
 
 
 

@@ -41,8 +41,8 @@ export default async function handler(
         categories: [
             {
               _type: "reference",
-              _ref: category,
-              _key: category
+              _ref: "4af19869-d3e8-4d62-be77-e9e61856bd29",
+              //_key: category
             },
           ],
         author: {
@@ -53,5 +53,5 @@ export default async function handler(
 } catch(error) {
     console.log(error)
 }
-console.log("CATEGORY REF FROM API: " + category)
+console.log("CATEGORY REF FROM API: " + category);
 }

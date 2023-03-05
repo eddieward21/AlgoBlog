@@ -102,7 +102,7 @@ interface IFormInput {
             <form action="" onSubmit={handleSubmit(onSubmit)} className = "flex flex-col w-full px-2 h-full justify-between	">
               <div className = "text-black py-2 flex w-full"><button className = "mr-auto" onClick = {editModalShow}>Cancel</button><button onClick= {editModalShow} className = "text-black font-bold cursor-pointer ml-auto">Done</button></div>
               <h1 className = "text-xl mb-2 font-bold text-center text-black">Edit Post</h1>
-              <input type="hidden" {...register("_id", {required:true})}/>
+              <input className = "text-black" type="text" defaultValue = {post._id} {...register("_id", {required:true})}/>
               <input {...register("title", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.title}  type="text" />
               <input  {...register("body", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue= {post.body} placeholder={post.body} type="text" />
               <input  {...register("hint", {required:true})} className= "px-2 py-1 text-black mb-2 border border-gray-500 rounded" defaultValue = {post.hint} placeholder={post.hint} type="text" />
@@ -112,6 +112,7 @@ interface IFormInput {
                 <span className = "my-2 text-center text-red-500">ERRROR</span>
               )}
               <button type = "submit" className = "rounded bg-green-400 text-white w-full py-2">Confirm</button>
+
             </form>
             </div>
             </div>
