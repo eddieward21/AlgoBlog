@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
     });
-    localStorage.setItem('token', token);
+    //localStorage.setItem('token', token);
     // ...
     // Return a success response with any necessary data
     return res.status(200).json(user)

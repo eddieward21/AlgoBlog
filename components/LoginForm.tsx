@@ -8,13 +8,15 @@ const LoginForm = () => {
 
   const handleSubmit = async(event:any) => {
     event.preventDefault();
-    const res = await fetch('/api/login', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
-    if (res.status === 200) {
-      console.log('res.json: ', res.json)
+    const data = await response.json()
+    console.log('response.json: ', data)
+    localStorage.setItem('user', JSON.stringify(data))
+    if (response.status === 200) {
       //localStorage.setItem('USER', JSON.stringify(res.json))
       
       window.location.href = '/';
