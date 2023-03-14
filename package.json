@@ -15,6 +15,7 @@
     "next": "latest",
     "next-auth": "^4.20.1",
     "next-sanity": "^3.1.8",
+    "nookies": "^2.5.2",
     "npm": "^9.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

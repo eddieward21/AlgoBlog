@@ -34,9 +34,11 @@ const Navbar = ({categories}: Props) => {
   .catch((error) => console.log(error))
   */
 
+
+  const user = true;
+
   const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
 
-  
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
@@ -122,8 +124,11 @@ const Navbar = ({categories}: Props) => {
       <Search/>
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HeartIcon className = "mr-5"height={25} width={25}/> Notifications</Link>
       <div className = "cursor-pointer mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg" onClick={showPostModal}><PlusCircleIcon className = "mr-5"height={25} width={25}/> Create</div>
-      <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><UserCircleIcon className = "mr-5"height={25} width={25}/> Profile</Link>
-
+      {user ? 
+      <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = "/profile"><UserCircleIcon className = "mr-5"height={25} width={25}/>Profile</Link>
+      : 
+      <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = "/auth/login"><UserCircleIcon className = "mr-5"height={25} width={25}/>Log In</Link>
+      }
 
       </div>
 
