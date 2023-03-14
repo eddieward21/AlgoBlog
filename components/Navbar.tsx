@@ -35,7 +35,7 @@ const Navbar = ({categories}: Props) => {
   */
 
 
-  const user = true;
+  const user = localStorage.getItem('user');
 
   const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
 
