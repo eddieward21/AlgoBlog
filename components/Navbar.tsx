@@ -122,8 +122,17 @@ const Navbar = ({categories}: Props) => {
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HomeIcon className = "mr-5"height={25} width={25}/> Home</Link>
 
       <Search/>
+      {user ? 
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HeartIcon className = "mr-5"height={25} width={25}/> Notifications</Link>
+      :
+      <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = "/auth/login"><HeartIcon className = "mr-5"height={25} width={25}/> Notifications</Link>
+      }
+      {user ? 
       <div className = "cursor-pointer mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg" onClick={showPostModal}><PlusCircleIcon className = "mr-5"height={25} width={25}/> Create</div>
+        :
+        <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = "/auth/login"><PlusCircleIcon className = "mr-5"height={25} width={25}/> Create</Link>
+
+    }
       {user ? 
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = "/profile"><UserCircleIcon className = "mr-5"height={25} width={25}/>Profile</Link>
       : 
