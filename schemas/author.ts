@@ -54,8 +54,7 @@ export default defineType({
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [],
         },
-      ],
-    }),
+      ],    }),
   ],
   preview: {
     select: {
