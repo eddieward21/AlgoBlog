@@ -14,12 +14,15 @@ const page = () => {
   
       if (storedData) {
         setUser(JSON.parse(storedData)[0]);
+      } else {
+        logoutUser();
       }
     }, []);
     const logoutUser = () =>{
-        localStorage.clear()
+        //localStorage.clear()
         window.location.href = '/auth/login';
     }
+
     return (
 
 

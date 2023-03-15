@@ -12,6 +12,9 @@ export default async function handler(req, res) {
       const query = groq`*[_type == "author" && email == $email && password == $password]`
 
     const user = await client.fetch(query, { email, password })  
+    console.log("USER from api route ", user)
+    console.log(user.length)
+
     //res.setHeader("USER", `myData=${userString}; Path=/getUser/`);
     //localStorage.setItem("user", JSON.stringify(user))
     //localStorage.setItem("user", {user})
@@ -19,11 +22,12 @@ export default async function handler(req, res) {
 
 
 
-    if (!user) {
+    if (user.length === 0) {
       // Return an error response if the user is not found or not authenticated
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401);
     }
     // Set a cookie or a token to authenticate the user in subsequent requests
+    /*
     const { token } = user;
     setCookie({ res }, 'token', token, {
       maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -32,12 +36,13 @@ export default async function handler(req, res) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
     });
+    */
     //localStorage.setItem('token', token);
     // ...
     // Return a success response with any necessary data
     return res.status(200).json(user)
   } catch (error) {
     // Return an error response if an error occurs
-    return res.status(500).json({ message: error.message });
+    return res.status(500);
   }
 }
