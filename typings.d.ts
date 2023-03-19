@@ -24,6 +24,7 @@ interface Post extends Base {
     showHint: boolean
     showApproach: boolean
     showSolution: boolean
+    difficulty: string
 }
 
 interface Author extends Base {

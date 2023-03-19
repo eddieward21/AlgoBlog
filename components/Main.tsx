@@ -10,7 +10,7 @@ const client = createClient({
     apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     useCdn: false,
 });
-const Main = async () => {
+const Main = async({categories}:any) => {
     const query = groq`*[_type=='post'] {
         ...,
         author->,
