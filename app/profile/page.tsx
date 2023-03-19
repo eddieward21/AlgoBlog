@@ -19,7 +19,7 @@ const page = () => {
       }
     }, []);
     const logoutUser = () =>{
-        //localStorage.clear()
+        localStorage.clear()
         window.location.href = '/auth/login';
     }
 

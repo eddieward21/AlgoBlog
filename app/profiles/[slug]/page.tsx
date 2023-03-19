@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useRouter } from 'next/navigation'
 import { groq } from 'next-sanity'
 import client from '../../../utils/client'
@@ -8,7 +8,6 @@ import author from '../../../schemas/author'
 import Navbar from '../../../components/Navbar'
 import Link from 'next/link'
 import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid'
-import BlockContent from '@sanity/block-content-to-react'
 import moment from 'moment'
 
 type Props = {
@@ -18,6 +17,7 @@ type Props = {
   friend: Author
 }
 async function Page({params: {slug}}: Props){
+  //const [user, setUser] = useState([])
   const query = groq`
     *[_type=='author' && slug.current == $slug][0] {
       friends[]->,
@@ -33,8 +33,9 @@ async function Page({params: {slug}}: Props){
     ...,
   }
   `
-const categories = await client.fetch(q)
+//const categories = await client.fetch(q)
 
+  const user = typeof window !== 'undefined' ? localStorage.getItem('user') : null
 
 
   return (
@@ -53,7 +54,11 @@ const categories = await client.fetch(q)
               <p className="text-gray-500">{profile.email}</p>
             </div>
           </div>
+          {user ? 
           <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Follow</button>
+          :
+          <Link href = "/auth/login" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Follow</Link>
+          }
         </div>
         <div className="mt-8">
           <div className="flex items-center">

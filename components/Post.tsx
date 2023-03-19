@@ -77,6 +77,8 @@ interface IFormInput {
     .catch((error) => console.log(error))
     console.log("Modal Closed?")
   }
+  const user = localStorage.getItem('user');
+
 
 
   return (
@@ -90,7 +92,9 @@ interface IFormInput {
     )}
     </h1>
     </div>
+    {user && 
     <div onClick = {popupShow} className = "ml-auto hover:cursor-pointer"><EllipsisHorizontalIcon fontWeight={100} height={30} width={30}/></div>
+ }
       {showPopup && (
         <div className="fixed top-0 bg-gray-500 bg-opacity-90 left-0 h-full w-full flex items-center justify-center">
           <div className="flex flex-col bg-white shadow-lg w-1/3 rounded">

@@ -7,6 +7,7 @@ import client from '../utils/client'
 import Footer from '../components/Footer'
 import Categories from '../components/Categories'
 import { SessionProvider } from "next-auth/react"
+import Navbar2 from '../components/Navbar2'
 
 
 
@@ -24,7 +25,7 @@ const categories = await client.fetch(query)
   return (
     <div className = "flex flex-col">
     <div className = "bg-[#131515] font-poppins grid grid-cols-12 h-max">
-      <Navbar categories = {categories}/>
+      <Navbar categories={categories}/>
       <Main/>
       <Categories categories = {categories}/>
     </div>
