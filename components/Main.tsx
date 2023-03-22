@@ -27,7 +27,7 @@ const Main = async({categories}:any) => {
   
 
   return (
-    <div className = "col-span-5 flex flex-col items-center overflow-scroll">
+    <div className = "w-full flex flex-col items-center overflow-scroll">
 
         <Profiles profiles = {profiles}/>
         <Posts posts = {posts}/>

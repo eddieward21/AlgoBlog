@@ -27,7 +27,7 @@ const categories = await client.fetch(query)
     <div className="flex flex-col md:flex-row">
 
   <div className="w-full md:w-1/6 bg-black">
-    <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-black shadow-md z-50">
+    <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-white shadow-md z-50">
       <div>link1</div>
       <div>link2</div>
       <div>link3</div>
@@ -38,13 +38,13 @@ const categories = await client.fetch(query)
   </div>
   
 
-  <div className="w-full md:w-2/3 bg-black">
+  <div className="w-full md:w-2/3 py-28 bg-black">
   <Main/>
 
   </div>
   
 
-  <div className="w-full md:w-1/3 bg-black">
+  <div className="w-full md:w-1/3 bg-gray-900">
   <Categories categories = {categories}/>
 
   </div>
