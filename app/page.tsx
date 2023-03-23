@@ -9,6 +9,9 @@ import Categories from '../components/Categories'
 import { SessionProvider } from "next-auth/react"
 import Navbar2 from '../components/Navbar2'
 
+type Props = {
+  profiles: Author[]
+}
 
 
 async function HomePage()  {
@@ -20,7 +23,14 @@ async function HomePage()  {
   `
 const categories = await client.fetch(query)
 
+const q = groq`*[_type=='author'] {
 
+  ...,
+}
+`
+const profiles = await client.fetch(q)
+
+console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
 
   return (
 
@@ -33,14 +43,13 @@ const categories = await client.fetch(query)
       <div>link3</div>
     </nav>
     <div className="md:block hidden h-screen">
-      <Navbar categories={categories}/>
+      <Navbar profiles = {profiles} categories={categories}/>
     </div>
   </div>
   
 
   <div className="w-full md:w-2/3 py-28 bg-black">
   <Main/>
-
   </div>
   
 

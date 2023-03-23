@@ -13,6 +13,7 @@ import {SubmitHandler, useForm} from 'react-hook-form'
 import client from '../utils/client'
 
 
+
 interface IFormInput {
   _id: string
   title: string
@@ -25,9 +26,11 @@ interface IFormInput {
 
 type Props = {
   categories: Category[]
+  profiles: Author[]
+
 }
 
-const Navbar = ({categories}: Props) => {
+const Navbar = ({categories}: Props, {profiles}: Props) => {
   /*
   const deleteRes =  fetch('api/posts/deletePost')
   .then(() => console.log("success"))
@@ -69,6 +72,7 @@ const Navbar = ({categories}: Props) => {
     .catch((error) => console.log(error))
     console.log("Modal Closed?")
   }
+  console.log(profiles, "profiles from navbar prop")
 
   
   return (
@@ -121,7 +125,7 @@ const Navbar = ({categories}: Props) => {
       <h1 className = "text-xl ml-5">AlgoBlog</h1>
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HomeIcon className = "mr-5"height={25} width={25}/> Home</Link>
 
-      <Search/>
+      <Search profiles = {profiles}/>
       {user ? 
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HeartIcon className = "mr-5"height={25} width={25}/> Notifications</Link>
       :

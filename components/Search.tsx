@@ -1,13 +1,12 @@
 import { Transition } from '@headlessui/react'
 import { Fragment, useId, useState } from 'react'
 import {MagnifyingGlassIcon} from '@heroicons/react/24/outline'
+import urlFor from '../utils/urlFor'
+import Link from 'next/link'
 
-
-const Search = () => {
+const Search = ({profiles}:any) => {
   const [show, setShow] = useState(false)
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
+  const [searchName, setSearchName] = useState('')
 
   return (
     <>
@@ -18,28 +17,18 @@ const Search = () => {
       <Transition.Root show={show}>
         <BackgroundLayer />
         <SlideOverLayer>
-          <h2 className="my-6 text-2xl font-bold">Register</h2>
+          <h2 className="my-6 text-2xl font-bold text-black">Search User</h2>
           <div className="space-y-4">
             <FadeIn delay="delay-[300ms]">
-              <input
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </FadeIn>
-            <FadeIn delay="delay-[600ms]">
-              <input
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </FadeIn>
-            <FadeIn delay="delay-[800ms]">
-              <input
-                label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              <input className = "border border-gray-800 rounded-full text-black px-2 py-1"
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
               />
             </FadeIn>
           </div>
+          
+
+
           <div className="my-6">
             <FadeIn delay="delay-[900ms]">
               <button className = "bg-black px-4 py-2 rounded-full" onClick={() => setShow(false)}>Close</button>
