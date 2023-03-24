@@ -16,7 +16,7 @@ type Props = {
   },
   friend: Author
 }
-async function Page({params: {slug}}: Props){
+async function Page({params: {slug}}: Props) {
   //const [user, setUser] = useState([])
   const query = groq`
     *[_type=='author' && slug.current == $slug][0] {
