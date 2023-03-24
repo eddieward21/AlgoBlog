@@ -30,7 +30,7 @@ type Props = {
 
 }
 
-const Navbar = ({categories}: Props, {profiles}: Props) => {
+const Navbar = ({categories, profiles}: Props) => {
   /*
   const deleteRes =  fetch('api/posts/deletePost')
   .then(() => console.log("success"))

@@ -1,12 +1,19 @@
 import { Transition } from '@headlessui/react'
-import { Fragment, useId, useState } from 'react'
+import { Fragment, useEffect, useId, useState } from 'react'
 import {MagnifyingGlassIcon} from '@heroicons/react/24/outline'
 import urlFor from '../utils/urlFor'
 import Link from 'next/link'
 
-const Search = ({profiles}:any) => {
+type Props = {
+  categories: Category[]
+  profiles: Author[]
+}
+
+const Search = ({profiles}:Props) => {
+
   const [show, setShow] = useState(false)
   const [searchName, setSearchName] = useState('')
+  
 
   return (
     <>
@@ -17,21 +24,34 @@ const Search = ({profiles}:any) => {
       <Transition.Root show={show}>
         <BackgroundLayer />
         <SlideOverLayer>
-          <h2 className="my-6 text-2xl font-bold text-black">Search User</h2>
+          <h2 className="my-6 text-2xl font-bold text-white">Search User</h2>
           <div className="space-y-4">
             <FadeIn delay="delay-[300ms]">
-              <input className = "border border-gray-800 rounded-full text-black px-2 py-1"
+              <input className = "border border-gray-800 rounded-full text-sm font-medium mb-2 text-black px-2 py-1"
                 value={searchName}
                 onChange={(e) => setSearchName(e.target.value)}
               />
             </FadeIn>
           </div>
           
-
+          <div>
+            {profiles.map((profile) => 
+              <div className="flex items-center rounded-lg border border-gray-500 px-5 bg-gray-900 my-2 py-2">
+              <Link href = {`profiles/${profile.slug.current}`}><img src={urlFor(profile.image).url()} className="object-cover hover:opacity-50 w-12 h-12 rounded-full mr-4" /></Link>
+              <div className="text-md font-bold flex flex-col">
+                <h1 className = "text-white text-sm hover:text-[#7de2d1]"><Link href = {`profiles/${profile.slug.current}`}>{profile.name}</Link></h1>
+                <h1 className='text-xs font-light text-white'>User</h1>
+              </div>
+              <div className = "ml-auto">
+              <h1 className='text-xs text-white hover:text-[#7de2d1] hover:cursor-pointer'>Follow</h1>
+            </div>
+            </div>
+            )}
+          </div>
 
           <div className="my-6">
             <FadeIn delay="delay-[900ms]">
-              <button className = "bg-black px-4 py-2 rounded-full" onClick={() => setShow(false)}>Close</button>
+              <button className = "bg-white px-4 py-2 rounded-full text-black" onClick={() => setShow(false)}>Close</button>
             </FadeIn>
           </div>
         </SlideOverLayer>
@@ -67,7 +87,7 @@ const SlideOverLayer = ({ children }:any) => (
       <div className="absolute inset-0 overflow-hidden">
         <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
           <div className="pointer-events-auto w-screen max-w-2xl">
-            <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+            <div className="flex h-full flex-col overflow-y-scroll bg-black py-6 shadow-xl">
               <div className="px-4 sm:px-6">{children}</div>
             </div>
           </div>

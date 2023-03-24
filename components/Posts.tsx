@@ -9,9 +9,10 @@ import client from '../utils/client'
 
 type Props = {
   posts: Post[];
+  categories: Author[];
 }
 
-function Posts({posts}: Props) {
+function Posts({posts , categories}: Props) {
 
 
 
@@ -25,7 +26,6 @@ function Posts({posts}: Props) {
   const handleDivClick = (event:any) => {
     setDifficulty(event.target.textContent);
   };
-
 
   console.log(search)
 
@@ -63,8 +63,9 @@ function Posts({posts}: Props) {
       <div onClick={showcatDD} className = "mb-2 relative flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800 h-full"><p>Categories</p> <ChevronDownIcon height={10} width={20}/>
       {catDD && 
           <div className = "text-white text-sm rounded bg-gray-800 shadow-md flex flex-col absolute left-0 bottom-0 w-32 transform translate-y-full">
-            {categories.map((category:any) => 
-                <div className = "text-xs py-2 pl-4 hover:bg-gray-700 rounded">{category.name}</div>
+            {categories.map((category) => 
+                <div className = "text-white text-xs py-2 pl-4 hover:bg-gray-700 rounded">Category {category.name}</div>
+
             )}
           </div>
       }

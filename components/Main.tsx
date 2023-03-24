@@ -10,7 +10,7 @@ const client = createClient({
     apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     useCdn: false,
 });
-const Main = async({categories}:any) => {
+const Main = async() => {
     const query = groq`*[_type=='post'] {
         ...,
         author->,
@@ -25,12 +25,16 @@ const Main = async({categories}:any) => {
     `
   const profiles = await client.fetch(profileQuery)
   
-
+  const categoryQuery = groq`*[_type=='category'] {
+    ...,
+  }
+  `
+const categories = await client.fetch(categoryQuery)
   return (
     <div className = "w-full flex flex-col items-center overflow-scroll">
 
         <Profiles profiles = {profiles}/>
-        <Posts posts = {posts}/>
+        <Posts categories = {categories} posts = {posts}/>
     </div>
   )
 }
