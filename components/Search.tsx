@@ -31,7 +31,7 @@ const Search = ({profiles}:Props) => {
           <h2 className="my-6 text-2xl font-bold text-white">Search User</h2>
           <div className="space-y-4">
             <FadeIn delay="delay-[300ms]">
-              <input className = "border border-gray-800 rounded-full text-sm font-medium mb-2 text-black px-2 py-1"
+              <input className = "border border-gray-800 rounded-full text-sm font-medium mb-2 text-black pr-11 py-1 focus:outline-none focus:ring-green-500 focus:border-green-500"
                 value={searchName}
                 onChange={(e) => setSearchName(e.target.value)}
               />
