@@ -14,6 +14,10 @@ const Search = ({profiles}:Props) => {
   const [show, setShow] = useState(false)
   const [searchName, setSearchName] = useState('')
   
+  const filteredProfiles = profiles.filter((profile) => 
+    profile.name.toLowerCase().includes(searchName.toLowerCase())
+
+  )
 
   return (
     <>
@@ -35,7 +39,7 @@ const Search = ({profiles}:Props) => {
           </div>
           
           <div>
-            {profiles.map((profile) => 
+            {filteredProfiles.map((profile) => 
               <div className="flex items-center rounded-lg border border-gray-500 px-5 bg-gray-900 my-2 py-2">
               <Link href = {`profiles/${profile.slug.current}`}><img src={urlFor(profile.image).url()} className="object-cover hover:opacity-50 w-12 h-12 rounded-full mr-4" /></Link>
               <div className="text-md font-bold flex flex-col">
