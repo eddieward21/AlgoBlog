@@ -12,28 +12,32 @@ type Props = {
 }
 async function Page({params: {slug}}: Props) {
   const query = groq`
-  *[_type=='category' && title == "Hashmap"][0] {
+  *[_type=='category' && title == $slug][0] {
     ...,
 
 }`
 
 const postsQuery = groq`
-  *[_type == "post" ] {
+  *[_type == "post"] {
     ...,
   }
 `
 const posts = await client.fetch(postsQuery, {slug})
-const category = await client.fetch(query, {slug: JSON.stringify(slug)})
+const category = await client.fetch(query, {slug})
 
 console.log(slug)
 console.log(JSON.stringify(posts))
 
+const categoryPosts = posts.filter((post:any) => 
+  post.categories.toLowerCase().includes(slug.toLowerCase()
+  )
+)
+
   return (
 <div className = "h-screen w-screen bg-black text-white"> 
 <div className="container mx-auto py-8">
-  <h1 className="text-3xl font-bold mb-4"><Link className = "text-xs font-light mr-8" href = "/">Back</Link>{category.title} Problems</h1>
-
-  <div className="grid grid-cols-3 gap-4">
+  <h1 className="text-3xl font-bold mb-4"><Link className = "text-xs font-light mr-8 px-2 py-1 rounded-full bg-white text-black" href = "/">Back</Link>{category.title} Problems</h1>
+  <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
 
   {posts.map((post:any) => 
     <div className="bg-gray-900 shadow rounded-lg p-6">
