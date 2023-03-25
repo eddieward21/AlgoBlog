@@ -6,7 +6,7 @@ type Props = {
 
 const Categories = ({categories}: Props) => {
   return (
-  <div className='col-span-4 pt-5 w-full'> 
+  <div className='pl-3 col-span-4 pt-5 w-full'> 
       <h1 className = "font-bold text-white text-xl ml-4 ">Categories</h1>
 
 <div className="w-full">
@@ -21,8 +21,7 @@ const Categories = ({categories}: Props) => {
    </p>
  </div>
  <div className="py-4">
-   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Problems</span>
-   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">View More</span>
+   <a href = {`categories/${category.title}`} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 hover:bg-gray-400 cursor-pointer">View More</a>
  </div>
 </div>
           )}

@@ -18,9 +18,9 @@ async function Page({params: {slug}}: Props) {
 }`
 
 const postsQuery = groq`
-  *[_type == "post"] {
-    ...,
-  }
+*[_type == "post" && references(*[_type == "category" && title == $slug]._id)] {
+...
+}
 `
 const posts = await client.fetch(postsQuery, {slug})
 const category = await client.fetch(query, {slug})
@@ -28,10 +28,8 @@ const category = await client.fetch(query, {slug})
 console.log(slug)
 console.log(JSON.stringify(posts))
 
-const categoryPosts = posts.filter((post:any) => 
-  post.categories.toLowerCase().includes(slug.toLowerCase()
-  )
-)
+
+
 
   return (
 <div className = "h-screen w-screen bg-black text-white"> 
