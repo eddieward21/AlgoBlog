@@ -10,7 +10,7 @@ const client = createClient({
     apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     useCdn: false,
 });
-const Main = async({profiles, categories, posts}: any) => {
+const Main = ({profiles, categories, posts}: any) => {
 
 
   return (
