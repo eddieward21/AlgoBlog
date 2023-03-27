@@ -14,7 +14,6 @@ type Props = {
   params: {
     slug: string;
   },
-  friend: Author
 }
 async function Page({params: {slug}}: Props) {
   //const [user, setUser] = useState([])

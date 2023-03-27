@@ -15,6 +15,13 @@ type Props = {
 
 
 async function HomePage()  {
+  const quer = groq`*[_type=='post'] {
+    ...,
+    author->,
+      categories[]->
+  }| order(_createdAt desc) 
+  `
+  const posts = await client.fetch(quer)  
 
   const query = groq`*[_type=='category'] {
 
@@ -49,7 +56,7 @@ console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
   
 
   <div className="w-full md:w-2/3 py-28 bg-black">
-  <Main/>
+  <Main profiles = {profiles} categories = {categories} posts = {posts}/>
   </div>
   
 

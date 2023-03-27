@@ -36,9 +36,10 @@ function Posts({posts , categories}: Props) {
     setDiffDD(!diffDD);
   }
 
+
   const filteredPosts = posts.filter(post => 
-    post.title.toLowerCase().includes(search.toLowerCase()) &&
-    post.difficulty.toLowerCase().includes(difficulty.toLowerCase())
+    post.title.toLowerCase().includes(search.toLowerCase()) 
+    && post.difficulty.toLowerCase().includes(difficulty.toLowerCase())
   );
 
   return (
