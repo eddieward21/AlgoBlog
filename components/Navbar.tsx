@@ -26,7 +26,7 @@ interface IFormInput {
 
 type Props = {
   categories: Category[]
-
+  profiles: Author[]
 }
 
 const Navbar = ({categories, profiles}: Props) => {

@@ -13,7 +13,6 @@ import {SubmitHandler, useForm} from 'react-hook-form'
 
 type Props = {
     post: Post
-    body: string
 }
 interface IFormInput {
   _id: string
