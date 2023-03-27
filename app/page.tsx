@@ -7,7 +7,6 @@ import client from '../utils/client'
 import Footer from '../components/Footer'
 import Categories from '../components/Categories'
 import { SessionProvider } from "next-auth/react"
-import Navbar2 from '../components/Navbar2'
 
 type Props = {
   profiles: Author[]
