@@ -26,7 +26,6 @@ interface IFormInput {
 
 type Props = {
   categories: Category[]
-  profiles: Author[]
 
 }
 

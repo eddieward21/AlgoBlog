@@ -5,7 +5,6 @@ import urlFor from '../utils/urlFor'
 import Link from 'next/link'
 
 type Props = {
-  categories: Category[]
   profiles: Author[]
 }
 
