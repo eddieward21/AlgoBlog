@@ -76,7 +76,7 @@ interface IFormInput {
     .catch((error) => console.log(error))
     console.log("Modal Closed?")
   }
-  const user = localStorage.getItem('user');
+  const user = typeof window !== 'undefined' ? localStorage.getItem('user') : null
 
 
 

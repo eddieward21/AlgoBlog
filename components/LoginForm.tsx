@@ -17,7 +17,6 @@ const LoginForm = () => {
     console.log('response.json: ', data)
     localStorage.setItem('user', JSON.stringify(data))
     if (response.status === 200) {
-      //localStorage.setItem('USER', JSON.stringify(res.json))
       
       window.location.href = '/';
     } else {

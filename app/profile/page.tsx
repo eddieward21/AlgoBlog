@@ -10,7 +10,9 @@ const page = () => {
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
-      const storedData = localStorage.getItem('user');
+      const storedData = typeof window !== 'undefined' ? localStorage.getItem('user') : null
+
+      //const storedData = localStorage.getItem('user');
   
       if (storedData) {
         setUser(JSON.parse(storedData)[0]);
