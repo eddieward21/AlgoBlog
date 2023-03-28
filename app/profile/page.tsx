@@ -10,7 +10,7 @@ const page = () => {
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
-      const storedData = typeof window !== 'undefined' ? .getItem('user') : null
+      const storedData = typeof window !== 'undefined' ? localStorage.getItem('user') : null
 
       //const storedData = localStorage.getItem('user');
   
