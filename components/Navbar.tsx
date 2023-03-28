@@ -37,7 +37,7 @@ const Navbar = ({categories, profiles}: Props) => {
   */
 
 
-  const user = localStorage.getItem('user');
+  const user = typeof window !== 'undefined' ? localStorage.getItem('user') : null
 
   const { register, handleSubmit, formState:{errors} } = useForm<IFormInput>();
 
