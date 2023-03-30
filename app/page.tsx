@@ -7,6 +7,7 @@ import client from '../utils/client'
 import Footer from '../components/Footer'
 import Categories from '../components/Categories'
 import { SessionProvider } from "next-auth/react"
+import { HeartIcon, PlusCircleIcon, UserCircleIcon, HomeIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 type Props = {
   profiles: Author[]
@@ -43,10 +44,11 @@ console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
     <div className="flex flex-col md:flex-row">
 
   <div className="w-full md:w-1/6 bg-black">
-    <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-white shadow-md z-50">
-      <div>link1</div>
-      <div>link2</div>
-      <div>link3</div>
+  <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-black text-white shadow-md z-50 w-full flex items-center justify-between">
+  <div><HomeIcon height = {30} width= {30}/></div>
+      <div><PlusCircleIcon height = {30} width= {30}/></div>
+      <div><UserCircleIcon height = {30} width= {30}/></div>
+
     </nav>
     <div className="md:block hidden h-screen">
       <Navbar profiles = {profiles} categories={categories}/>
@@ -54,7 +56,7 @@ console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
   </div>
   
 
-  <div className="w-full md:w-2/3 py-28 bg-black">
+  <div className="w-full md:w-2/3 py-10 bg-black">
   <Main profiles = {profiles} categories = {categories} posts = {posts}/>
   </div>
   
