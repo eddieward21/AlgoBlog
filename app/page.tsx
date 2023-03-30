@@ -44,32 +44,19 @@ console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
     <div className="flex flex-col md:flex-row">
 
   <div className="w-full md:w-1/6 bg-black">
-  <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-black text-white shadow-md z-50 w-full flex items-center justify-between">
-  <div><HomeIcon height = {30} width= {30}/></div>
-      <div><PlusCircleIcon height = {30} width= {30}/></div>
-      <div><UserCircleIcon height = {30} width= {30}/></div>
-
-    </nav>
-    <div className="md:block hidden h-screen">
-      <Navbar profiles = {profiles} categories={categories}/>
-    </div>
+    <Navbar profiles = {profiles} categories={categories}/>
   </div>
   
 
   <div className="w-full md:w-2/3 py-10 bg-black">
-  <Main profiles = {profiles} categories = {categories} posts = {posts}/>
+    <Main profiles = {profiles} categories = {categories} posts = {posts}/>
   </div>
   
-
   <div className="w-full md:w-1/3 bg-gray-900">
-  <Categories categories = {categories}/>
-
+    <Categories categories = {categories}/>
   </div>
+
 </div>
-
-
-
-
 
   )
 }

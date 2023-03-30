@@ -75,6 +75,28 @@ const Navbar = ({categories, profiles}: Props) => {
 
   
   return (
+  <> 
+    <nav className="md:hidden fixed top-0 right-0 left-0 p-2 bg-black text-white shadow-md z-50 w-full flex items-center justify-between">
+    {user ? 
+    <Link href = "/"><HomeIcon height = {30} width= {30}/></Link>
+    :
+    <Link href = "/"><HomeIcon height = {30} width= {30}/></Link>
+    }
+    {user ? 
+        <div><PlusCircleIcon height = {30} width= {30}/></div>
+        :
+        <Link href = "/auth/login"><PlusCircleIcon height = {30} width= {30}/></Link>
+    }
+        {user ? 
+        <Link href = "/profile"><UserCircleIcon height = {30} width= {30}/></Link>
+        :
+        <Link href = "/auth/login"><UserCircleIcon height = {30} width= {30}/></Link>
+
+  }
+  
+      </nav>
+    <div className="md:block hidden h-screen">
+
     <nav className = "flex flex-col h-screen text-white font-bold py-3 col-span-3 bg-black pl-5 w-full pr-10 py-10 border-r-2 sticky top-0 border-r border-gray-500">
       {showModal && (
         <div className="fixed inset-0 overflow-y-auto">
@@ -145,6 +167,9 @@ const Navbar = ({categories, profiles}: Props) => {
       </div>
 
     </nav>
+
+    </div>
+    </>
   )
 }
 
