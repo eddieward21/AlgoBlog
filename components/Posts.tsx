@@ -61,7 +61,7 @@ function Posts({posts , categories}: Props) {
       }
       </div>
 
-      <div onClick={showcatDD} className = "mb-2 relative flex flex-row rounded items-center	justify-center pl-2 cursor-pointer bg-gray-800 h-full"><p>Categories</p> <ChevronDownIcon height={10} width={20}/>
+      <div onClick={showcatDD} className = "mb-2 relative flex flex-row rounded items-center justify-center pl-2 cursor-pointer bg-gray-800 h-full"><p>Categories</p> <ChevronDownIcon height={10} width={20}/>
       {catDD && 
           <div className = "text-white text-sm rounded bg-gray-800 shadow-md flex flex-col absolute left-0 bottom-0 w-32 transform translate-y-full">
             {categories.map((category) => 
