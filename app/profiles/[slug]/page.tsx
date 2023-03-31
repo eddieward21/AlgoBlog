@@ -69,8 +69,7 @@ async function Page({params: {slug}}: Props) {
             <span className="text-white">New York City</span>
           </div>
           <div className="flex items-center mt-4">
-            <span className="text-gray-500 mr-2">Website:</span>
-            <a href="#" className="text-blue-500 hover:underline">johndoe.com</a>
+
           </div>
           <div className="flex items-center mt-4">
             <span className="text-gray-500 mr-2">Bio:</span>
@@ -88,14 +87,15 @@ async function Page({params: {slug}}: Props) {
                 </Image>
               <div className="p-4">
                 <h3 className="font-bold text-white text-xl mb-2">Post Title</h3>
-                <p className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae urna quis mauris consectetur placerat eu euismod neque.</p>
+                <p className="text-gray-700">Post Body</p>
               </div>
             </div>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <Image className="w-full h-48 object-cover" width={20} height = {20} src="https://via.placeholder.com/500x300" alt=""></Image>
               <div className="p-4">
                 <h3 className="font-bold text-white text-xl mb-2">Post Title</h3>
-                <p className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae urna</p>
+                <p className="text-gray-700">Post body</p>
+
                 </div>
                 </div>
                 </div>

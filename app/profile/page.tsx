@@ -54,8 +54,7 @@ const page = () => {
             <span className="text-white">New York City</span>
           </div>
           <div className="flex items-center mt-4">
-            <span className="text-gray-500 mr-2">Website:</span>
-            <a href="#" className="text-blue-500 hover:underline">johndoe.com</a>
+
           </div>
           <div className="flex items-center mt-4">
             <span className="text-gray-500 mr-2">Bio:</span>
