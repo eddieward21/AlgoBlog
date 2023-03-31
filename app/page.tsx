@@ -48,7 +48,7 @@ console.log("PROFILES FROM NAVBAR PARENT PROP: ", profiles)
   </div>
   
 
-  <div className="w-full md:w-2/3 py-10 bg-black">
+  <div className="w-full md:w-2/3 py-12 bg-black">
     <Main profiles = {profiles} categories = {categories} posts = {posts}/>
   </div>
   
