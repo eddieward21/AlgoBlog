@@ -125,17 +125,17 @@ const Navbar = ({categories, profiles}: Props) => {
 
 
     {user ? 
-    <Link href = "/"><HomeIcon height = {30} width= {30}/></Link>
+    <Link className = "px-2 py-2 rounded-full hover:text-black hover:bg-white" href = "/"><HomeIcon height = {30} width= {30}/></Link>
     :
-    <Link href = "/"><HomeIcon height = {30} width= {30}/></Link>
+    <Link className = "px-2 py-2 rounded-full hover:text-black hover:bg-white" href = "/"><HomeIcon height = {30} width= {30}/></Link>
     }
     {user ? 
-        <div className = "cursor-pointer" onClick={showPostModal}><PlusCircleIcon height = {30} width= {30}/></div>
+        <div className = "px-2 py-2 rounded-full hover:text-black hover:bg-white cursor-pointer" onClick={showPostModal}><PlusCircleIcon height = {30} width= {30}/></div>
         :
-        <Link href = "/auth/login"><PlusCircleIcon height = {30} width= {30}/></Link>
+        <Link className='px-2 py-2 rounded-full hover:text-black hover:bg-white' href = "/auth/login"><PlusCircleIcon height = {30} width= {30}/></Link>
     }
 
-      <div><MagnifyingGlassIcon height = {30} width= {30}/></div>
+      <div className = ""><Search profiles = {profiles}/></div>
 
 
 
@@ -144,9 +144,9 @@ const Navbar = ({categories, profiles}: Props) => {
 
 
         {user ? 
-        <Link href = "/profile"><UserCircleIcon height = {30} width= {30}/></Link>
+        <Link className = "px-2 py-2 rounded-full hover:text-black hover:bg-white" href = "/profile"><UserCircleIcon height = {30} width= {30}/></Link>
         :
-        <Link href = "/auth/login"><UserCircleIcon height = {30} width= {30}/></Link>
+        <Link className = "px-2 py-2 rounded-full hover:text-black hover:bg-white" href = "/auth/login"><UserCircleIcon height = {30} width= {30}/></Link>
 
   }
 
@@ -208,9 +208,9 @@ const Navbar = ({categories, profiles}: Props) => {
 
       <div className="w-full position:fixed left-0 top-0">
       <h1 className = "text-xl ml-5">AlgoBlog</h1>
-      <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HomeIcon className = "mr-5"height={25} width={25}/> Home</Link>
+      <Link className = "mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HomeIcon className = "mr-5"height={25} width={25}/> Home</Link>
 
-      <Search profiles = {profiles}/>
+      <div className = "mt-4"><Search profiles = {profiles}/></div>
       {user ? 
       <Link className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"href = ""><HeartIcon className = "mr-5"height={25} width={25}/> Notifications</Link>
       :

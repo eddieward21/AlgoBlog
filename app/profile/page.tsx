@@ -29,7 +29,7 @@ const page = () => {
 
 
 <div className="bg-black min-h-screen w-full">
-<Link href = "/" className = "text-white flex items-center"><ArrowLeftCircleIcon className = "text-white" height={40} width={40}/>Back</Link>
+<Link href = "/" className = "text-white flex items-center"><ArrowLeftCircleIcon className = "text-white" height={40} width={40}/></Link>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="py-12">
       <div className="max-w-3xl mx-auto">

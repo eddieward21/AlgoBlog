@@ -4,6 +4,7 @@ import client from '../../../utils/client'
 import Image from 'next/image'
 import urlFor from '../../../utils/urlFor'
 import Link from 'next/link'
+import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
 
 type Props = {
   params: {
@@ -33,8 +34,8 @@ console.log(JSON.stringify(posts))
 
   return (
 <div className = "h-screen w-screen bg-black text-white"> 
-<div className="container mx-auto py-8">
-  <h1 className="text-3xl font-bold mb-4"><Link className = "text-xs font-light mr-8 px-2 py-1 rounded-full bg-white text-black" href = "/">Back</Link>{category.title} Problems</h1>
+<div className="container  mx-auto py-8">
+<div className = "flex flex-row items-center justify-between"><Link href = "/"><ArrowLeftCircleIcon className = "mb-4 mr-3" height = {30} width = {30}/></Link><h1 className=" mr-auto text-3xl font-bold mb-4">{category.title} Problems</h1></div>
   <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
 
   {posts.map((post:any) => 

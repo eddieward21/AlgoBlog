@@ -21,7 +21,7 @@ const Search = ({profiles}:Props) => {
   return (
     <>
       <div className="w-full">
-        <button onClick={() => setShow(!show)} className = " mt-5 flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"><MagnifyingGlassIcon className = "mr-5" height={25} width={25}/> Search</button>
+        <button onClick={() => setShow(!show)} className = "flex flex-row items-center hover:bg-white hover:text-black px-5 h-10 rounded-full hover:shadow-lg"><MagnifyingGlassIcon className = "mr-5" height={25} width={25}/> Search</button>
       </div>
       <Transition.Root show={show}>
         <BackgroundLayer />
@@ -29,7 +29,7 @@ const Search = ({profiles}:Props) => {
           <h2 className="my-6 text-2xl font-bold text-white">Search User</h2>
           <div className="space-y-4">
             <FadeIn delay="delay-[300ms]">
-              <input className = "border border-gray-800 rounded-full text-sm font-medium mb-2 text-black pr-11 py-1 focus:outline-none focus:ring-green-500 focus:border-green-500"
+              <input className = "border border-gray-800 rounded-full text-sm font-medium mb-2 pl-2 text-black pr-11 py-1 focus:outline-none focus:ring-green-500 focus:border-green-500"
                 value={searchName}
                 onChange={(e) => setSearchName(e.target.value)}
               />
